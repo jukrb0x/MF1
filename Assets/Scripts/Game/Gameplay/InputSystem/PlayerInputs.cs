@@ -1,11 +1,9 @@
 using UnityEngine;
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
-#endif
 
-namespace StarterAssets
+namespace InputSystem
 {
-	public class StarterAssetsInputs : MonoBehaviour
+	public class PlayerInputs : MonoBehaviour
 	{
 		[Header("Character Input Values")]
 		public Vector2 move;
@@ -63,7 +61,7 @@ namespace StarterAssets
 
 		public void SprintInput(bool newSprintState)
 		{
-			sprint = newSprintState;
+			sprint = !sprint;
 		}
 
 		private void OnApplicationFocus(bool hasFocus)
