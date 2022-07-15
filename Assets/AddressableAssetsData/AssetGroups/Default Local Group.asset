@@ -21,14 +21,6 @@ MonoBehaviour:
     m_Address: Assets/Scenes/Playground.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 873d688069a91c3459405b4568420aeb
-    m_Address: Assets/Scenes/PersistentManagers.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 2f8d77459420f0442ae3cda203a2946a
-    m_Address: Assets/Scenes/SomeThingSO.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 89ce6148b4addf844b73ec1d053f85ce, type: 2}
   m_SchemaSet:
