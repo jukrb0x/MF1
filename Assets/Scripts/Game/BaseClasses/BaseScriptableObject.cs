@@ -3,10 +3,8 @@ using UnityEngine;
 namespace Game.BaseClasses
 {
     // Base Scriptable Object with a description TextArea
-    public class BaseSO : ScriptableObject
+    public class BaseScriptableObject : ScriptableObject
     {
         [SerializeField] [TextArea] private string description;
-        
-
     }
 }
