@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 960f7e1b87c20564f871f385799010bf
+labels:
+- avatar
+- character
+- constructor
+- creator
+- hierarchy
+- ragdoll
+- skeleton
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

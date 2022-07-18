@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: b1fc0bfcbb9659445bfc365d3bd0b8b5
+labels:
+- animation
+- animator
+- avatar
+- blend
+- character
+- collider
+- hierarchy
+- joint
+- mecanim
+- mix
+- physics
+- ragdoll
+- skeleton
+- state
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: a7f6447869035184784145b55a89ee98
+labels:
+- avatar
+- character
+- collider
+- constructor
+- creator
+- hierarchy
+- joint
+- physics
+- skeleton
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
