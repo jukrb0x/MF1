@@ -21,6 +21,10 @@ MonoBehaviour:
     m_Address: Assets/Scenes/Playground.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: d2809ab9b90eea7419d8d90d4c505d35
+    m_Address: Assets/RPGPP_LT/Scene/rpgpp_lt_scene_1.0.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 89ce6148b4addf844b73ec1d053f85ce, type: 2}
   m_SchemaSet:
