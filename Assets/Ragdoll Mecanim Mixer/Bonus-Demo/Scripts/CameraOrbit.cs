@@ -26,6 +26,7 @@ namespace FightDemo {
             cam = Camera.main;
         }
         private void Update() {
+            // todo: input system
             targetTimeScale -= Input.GetAxis("Mouse ScrollWheel");
             timeScale = Mathf.Lerp(timeScale, Mathf.Clamp01(targetTimeScale), 0.1f);
             Time.timeScale = timeScale;

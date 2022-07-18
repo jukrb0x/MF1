@@ -3,7 +3,7 @@ using UnityEditor;
 
 namespace RagdollMecanimMixer {
     [CustomEditor(typeof(RamecanMixer))]
-    public class RamecanMixerEditor : Editor {
+    public class RamecanMixerEditor : UnityEditor.Editor {
         private RamecanMixer tgt;
 
         private Rect[] rects;

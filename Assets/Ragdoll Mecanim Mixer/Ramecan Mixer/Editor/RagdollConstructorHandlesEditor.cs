@@ -5,8 +5,7 @@ using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
 namespace RagdollMecanimMixer {
-    public partial class RagdollConstructorEditor : Editor {
-        
+    public partial class RagdollConstructorEditor : UnityEditor.Editor {
         private readonly BoxBoundsHandle boxBoundsHandle = new BoxBoundsHandle() {
             wireframeColor = Color.green,
             handleColor = Color.green
