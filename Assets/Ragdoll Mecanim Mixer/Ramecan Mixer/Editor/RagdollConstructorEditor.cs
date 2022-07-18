@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RagdollMecanimMixer {
     [CustomEditor(typeof(RagdollConstructor))]
-    public partial class RagdollConstructorEditor : Editor {
+    public partial class RagdollConstructorEditor : UnityEditor.Editor {
         private RagdollConstructor tgt;
 
         private bool lineDrag;
