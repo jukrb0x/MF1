@@ -1,0 +1,499 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9bedf342f7517b48a204328f1d6dc1b, type: 3}
+  m_Name: EthanAvatar
+  m_EditorClassIdentifier: 
+  mass: 70
+  layer: 9
+  physicMaterial: {fileID: 0}
+  spring: 1000
+  damper: 10
+  previewBones:
+  - name: EthanSpine
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: -1
+    childIDs: 010000000400000007000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0, y: 0.73724157, z: 0.67562926, w: 0}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: 0.024072126, z: 0.074458726}
+      m_Extent: {x: 0.11725017, y: 0.09257601, z: 0.074458726}
+    capsuleBounds:
+      height: 0.23450033
+      radius: 0.09257601
+      direction: 0
+    axis: {x: 0, y: 0, z: 1}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.15
+  - name: EthanLeftUpLeg
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 0
+    childIDs: 02000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.68289167, y: -0.016524667, z: -0.017667478, w: 0.730119}
+    colliderType: 1
+    bounds:
+      m_Center: {x: 0, y: 0.014034666, z: 0.17891806}
+      m_Extent: {x: 0.065818824, y: 0.065818824, z: 0.17891806}
+    capsuleBounds:
+      height: 0.35783613
+      radius: 0.065818824
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -80.50897
+    highTwistLimit: 113.81562
+    swing1Limit: 58.54062
+    swing2Limit: 28.798187
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.075
+  - name: EthanLeftLeg
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 1
+    childIDs: 03000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.79630744, y: -0.019623611, z: -0.0148941465, w: 0.60439026}
+    colliderType: 1
+    bounds:
+      m_Center: {x: 0, y: -0.012098148, z: 0.16618493}
+      m_Extent: {x: 0.05511102, y: 0.05511102, z: 0.16618493}
+    capsuleBounds:
+      height: 0.33236986
+      radius: 0.05511102
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -100.825195
+    highTwistLimit: -0.4901886
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.075
+  - name: EthanLeftFoot
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 2
+    childIDs: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.7040376, y: -0.06448609, z: 0.06450836, w: 0.70428073}
+    colliderType: 1
+    bounds:
+      m_Center: {x: 0.007889498, y: 0.080083914, z: 0.06364572}
+      m_Extent: {x: 0.043531224, y: 0.12224389, z: 0.043531224}
+    capsuleBounds:
+      height: 0.24448778
+      radius: 0.043531224
+      direction: 1
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 12.288544
+    swing2Limit: 33.33737
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.035
+  - name: EthanRightUpLeg
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 0
+    childIDs: 05000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.6828907, y: 0.016524648, z: 0.017667504, w: 0.73011994}
+    colliderType: 1
+    bounds:
+      m_Center: {x: 0, y: 0.014034666, z: 0.17891805}
+      m_Extent: {x: 0.065818824, y: 0.065818824, z: 0.17891805}
+    capsuleBounds:
+      height: 0.3578361
+      radius: 0.065818824
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -80.50897
+    highTwistLimit: 113.81562
+    swing1Limit: 58.54062
+    swing2Limit: 28.798187
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.075
+  - name: EthanRightLeg
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 4
+    childIDs: 06000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.7963083, y: 0.019623637, z: 0.014894122, w: 0.60438913}
+    colliderType: 1
+    bounds:
+      m_Center: {x: 0, y: -0.012098148, z: 0.16618502}
+      m_Extent: {x: 0.05511102, y: 0.05511102, z: 0.16618502}
+    capsuleBounds:
+      height: 0.33237004
+      radius: 0.05511102
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -100.825195
+    highTwistLimit: -0.4901886
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.075
+  - name: EthanRightFoot
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 5
+    childIDs: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.70414287, y: 0.06332628, z: -0.063348144, w: 0.704386}
+    colliderType: 1
+    bounds:
+      m_Center: {x: -0.007889498, y: 0.080083914, z: 0.06364572}
+      m_Extent: {x: 0.043531224, y: 0.12224389, z: 0.043531224}
+    capsuleBounds:
+      height: 0.24448778
+      radius: 0.043531224
+      direction: 1
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 12.288544
+    swing2Limit: 33.33737
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.035
+  - name: EthanSpine1
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 0
+    childIDs: 08000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0, y: 0.7372755, z: 0.6755923, w: 0}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: 0.031143367, z: 0.06444794}
+      m_Extent: {x: 0.1250953, y: 0.10641202, z: 0.06444794}
+    capsuleBounds:
+      height: 0.2501906
+      radius: 0.10641202
+      direction: 0
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 16.559967
+    swing2Limit: 18.36377
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.14999998
+  - name: EthanSpine2
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 7
+    childIDs: 090000000a0000000d000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0, y: 0.68561846, z: 0.7279611, w: 0}
+    colliderType: 0
+    bounds:
+      m_Center: {x: 0, y: 0.020202383, z: 0.1126312}
+      m_Extent: {x: 0.1543, y: 0.11015135, z: 0.1126312}
+    capsuleBounds:
+      height: 0.3086
+      radius: 0.1126312
+      direction: 0
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -29.252167
+    highTwistLimit: 29.872868
+    swing1Limit: 21.955261
+    swing2Limit: 21.467346
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.13
+  - name: EthanHead
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 8
+    childIDs: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: -0.00000003090862, y: -0.70710677, z: -0.70710677, w: 0.00000003090862}
+    colliderType: 1
+    bounds:
+      m_Center: {x: 0, y: 0.0072432756, z: 0.10844513}
+      m_Extent: {x: 0.07893279, y: 0.07893279, z: 0.118590705}
+    capsuleBounds:
+      height: 0.23718141
+      radius: 0.07893279
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -49.364536
+    highTwistLimit: 47.107185
+    swing1Limit: 45.49936
+    swing2Limit: 30.26
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.07
+  - name: EthanLeftArm
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 8
+    childIDs: 0b000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.61623526, y: -0.32387537, z: -0.3339817, w: 0.63546455}
+    colliderType: 1
+    bounds:
+      m_Center: {x: 0.01036543, y: 0, z: 0.123052225}
+      m_Extent: {x: 0.04565921, y: 0.04565921, z: 0.123052225}
+    capsuleBounds:
+      height: 0.24610445
+      radius: 0.04565921
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -44.690624
+    highTwistLimit: 117.455635
+    swing1Limit: 87.52023
+    swing2Limit: 58.797535
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.025
+  - name: EthanLeftForeArm
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 10
+    childIDs: 0c000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.45999524, y: -0.22964577, z: -0.3831101, w: 0.7673942}
+    colliderType: 1
+    bounds:
+      m_Center: {x: 0.010679505, y: 0, z: 0.08079742}
+      m_Extent: {x: 0.03275323, y: 0.03275323, z: 0.08079742}
+    capsuleBounds:
+      height: 0.16159484
+      radius: 0.03275323
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: 0.24228337
+    highTwistLimit: 108.288216
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.025
+  - name: EthanLeftHand
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 11
+    childIDs: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.48946446, y: -0.026695961, z: -0.40252277, w: 0.77310246}
+    colliderType: 2
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.04393051}
+      m_Extent: {x: 0.043923065, y: 0.043923065, z: 0.043923065}
+    capsuleBounds:
+      height: 0.08784613
+      radius: 0.043923065
+      direction: 0
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 16.955383
+    swing2Limit: 18.371368
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.015
+  - name: EthanRightArm
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 8
+    childIDs: 0e000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.6162338, y: 0.32387507, z: 0.33398274, w: 0.63546556}
+    colliderType: 1
+    bounds:
+      m_Center: {x: -0.01036543, y: 0, z: 0.12305214}
+      m_Extent: {x: 0.04565921, y: 0.04565921, z: 0.12305214}
+    capsuleBounds:
+      height: 0.24610429
+      radius: 0.04565921
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -44.690624
+    highTwistLimit: 117.455635
+    swing1Limit: 87.52023
+    swing2Limit: 58.797535
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.025
+  - name: EthanRightForeArm
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 13
+    childIDs: 0f000000
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.45999676, y: 0.2296471, z: 0.38311034, w: 0.76739275}
+    colliderType: 1
+    bounds:
+      m_Center: {x: -0.0106795, y: 0, z: 0.0807971}
+      m_Extent: {x: 0.03275323, y: 0.03275323, z: 0.0807971}
+    capsuleBounds:
+      height: 0.1615942
+      radius: 0.03275323
+      direction: 2
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: 0.24228337
+    highTwistLimit: 108.288216
+    swing1Limit: 0
+    swing2Limit: 0
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.025
+  - name: EthanRightHand
+    avatarConnection: 
+    tr: {fileID: 0}
+    parentID: 14
+    childIDs: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    selected: 0
+    characterBoneId: -1
+    rotation: {x: 0.50156415, y: 0.09621532, z: 0.27646708, w: 0.8140897}
+    colliderType: 2
+    bounds:
+      m_Center: {x: 0, y: 0, z: 0.04393051}
+      m_Extent: {x: 0.043923065, y: 0.043923065, z: 0.043923065}
+    capsuleBounds:
+      height: 0.08784613
+      radius: 0.043923065
+      direction: 0
+    axis: {x: 1, y: 0, z: 0}
+    swingAxis: {x: 0, y: 1, z: 0}
+    lowTwistLimit: -20
+    highTwistLimit: 20
+    swing1Limit: 16.955383
+    swing2Limit: 18.371368
+    direction: {x: 0, y: 0, z: 0}
+    massInPercent: 0.015
