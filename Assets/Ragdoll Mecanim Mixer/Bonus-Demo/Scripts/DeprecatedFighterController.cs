@@ -55,7 +55,7 @@ namespace FightDemo {
             float time = animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
             if (hitController.IsDead) {
-                if (Input.GetButtonDown("Fire1"))
+                if (Input.GetButtonDown("Fire1")) // left ctrl
                     hitController.Revive();
                 return;
             }

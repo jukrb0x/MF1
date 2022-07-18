@@ -155,6 +155,7 @@ namespace Game.Gameplay
         {
             _hasAnimator = TryGetComponent(out _animator);
 
+            // check all inputs every frame
             JumpAndGravity();
             GroundedCheck();
             Move();
@@ -177,8 +178,9 @@ namespace Game.Gameplay
         private void GroundedCheck()
         {
             // set sphere position, with offset
-            Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset,
-                transform.position.z);
+            var position = transform.position;
+            Vector3 spherePosition = new Vector3(position.x, position.y - GroundedOffset,
+                position.z);
             Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers,
                 QueryTriggerInteraction.Ignore);
 
@@ -359,12 +361,12 @@ namespace Game.Gameplay
             Color transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
             Color transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
 
-            if (Grounded) Gizmos.color = transparentGreen;
-            else Gizmos.color = transparentRed;
+            Gizmos.color = Grounded ? transparentGreen : transparentRed;
 
             // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
+            var position = transform.position;
             Gizmos.DrawSphere(
-                new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z),
+                new Vector3(position.x, position.y - GroundedOffset, position.z),
                 GroundedRadius);
         }
 
