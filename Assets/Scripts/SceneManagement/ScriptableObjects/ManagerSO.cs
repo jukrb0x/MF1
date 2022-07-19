@@ -1,4 +1,3 @@
-using Game.BaseClasses;
 using UnityEngine;
 
 namespace SceneManagement.ScriptableObjects

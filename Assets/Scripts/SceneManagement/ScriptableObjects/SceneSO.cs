@@ -1,4 +1,4 @@
-using Game.BaseClasses;
+using BaseClasses;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.BaseClasses
+namespace BaseClasses
 {
     // Base Scriptable Object with a description TextArea
     public class BaseScriptableObject : ScriptableObject
