@@ -100,7 +100,7 @@ CharacterController:
   m_GameObject: {fileID: 208418252975175048}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Height: 1.8
   m_Radius: 0.28
@@ -364,7 +364,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 385038355611236341}
   serializedVersion: 2
-  m_Mass: 10.9375
+  m_Mass: 21.5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -383,8 +383,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3269043, y: 0.3184948, z: 0.24770927}
-  m_Center: {x: 0, y: 0.10578972, z: -0.022582471}
+  m_Size: {x: 0.20864868, y: 0.3184948, z: 0.18}
+  m_Center: {x: -0.00048828125, y: 0.10578972, z: -0.005817622}
 --- !u!1 &393263445080083592
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,10 +446,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.09
-  m_Height: 0.413344
+  m_Radius: 0.0669384
+  m_Height: 0.41334403
   m_Direction: 1
-  m_Center: {x: 0, y: -0.206672, z: 0}
+  m_Center: {x: 0.023061605, y: -0.20667309, z: 1.03326576e-10}
 --- !u!144 &4587023514251923682
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -469,18 +469,18 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: -20
+    limit: -51.472137
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 70
+    limit: 44.14444
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 0
     damper: 0
   m_Swing1Limit:
-    limit: 30
+    limit: 19.579317
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
@@ -1225,7 +1225,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3225752011999299033}
   serializedVersion: 2
-  m_Mass: 4.375
+  m_Mass: 2
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -1244,8 +1244,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.081726074
-  m_Center: {x: 0, y: 0.081726074, z: 0}
+  m_Radius: 0.10231495
+  m_Center: {x: 0, y: 0.03827477, z: 0.022862436}
 --- !u!144 &4587023514040802775
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1265,18 +1265,18 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: -40
+    limit: -27.46211
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 25
+    limit: 14.058197
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 0
     damper: 0
   m_Swing1Limit:
-    limit: 25
+    limit: 19.043549
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
@@ -3033,10 +3033,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.09
+  m_Radius: 0.069987684
   m_Height: 0.41334414
   m_Direction: 1
-  m_Center: {x: 0, y: 0.20667207, z: 0}
+  m_Center: {x: -0.020012317, y: 0.20667309, z: -1.245261e-10}
 --- !u!144 &4587023515152809837
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -3056,18 +3056,18 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: -20
+    limit: -51.472137
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 70
+    limit: 44.14444
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 0
     damper: 0
   m_Swing1Limit:
-    limit: 30
+    limit: 19.579317
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
@@ -3350,7 +3350,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8204808322786069530}
   serializedVersion: 2
-  m_Mass: 10.9375
+  m_Mass: 13.6
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -3369,8 +3369,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3269043, y: 0.17692375, z: 0.24770927}
-  m_Center: {x: 0, y: 0.08846101, z: -0.02319394}
+  m_Size: {x: 0.26599884, y: 0.17692375, z: 0.17}
+  m_Center: {x: 0.0010719299, y: 0.08846101, z: -0.006663136}
 --- !u!144 &4587023513218160072
 CharacterJoint:
   m_ObjectHideFlags: 0
