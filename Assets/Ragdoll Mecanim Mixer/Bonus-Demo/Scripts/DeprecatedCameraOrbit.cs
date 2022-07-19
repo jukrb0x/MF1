@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 namespace FightDemo {
-    public class CameraOrbit : MonoBehaviour {
+    public class DeprecatedCameraOrbit : MonoBehaviour {
 
         public HitController target;
         public HitController secondTarget;

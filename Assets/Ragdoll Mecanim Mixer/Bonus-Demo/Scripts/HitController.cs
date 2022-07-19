@@ -31,7 +31,7 @@ namespace FightDemo {
             col.enabled = false;
             charController.Die();
 
-            CameraOrbit co = Camera.main.GetComponent<CameraOrbit>();
+            DeprecatedCameraOrbit co = Camera.main.GetComponent<DeprecatedCameraOrbit>();
             co.secondTarget = this;
             co.targetTimeScale = 0.05f;
 
