@@ -7,6 +7,5 @@ namespace FightDemo {
         public EnemyController enemyController;
         public HitController hitController;
         public RamecanMixer ramecanMixer;
-        public MonoBehaviour testMono;
     }
 }
