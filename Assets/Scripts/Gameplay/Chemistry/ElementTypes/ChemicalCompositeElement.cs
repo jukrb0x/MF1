@@ -1,6 +1,6 @@
-using Game.BaseClasses;
+using BaseClasses;
 
-namespace Game.Gameplay.Chemistry.ElementTypes
+namespace Gameplay.Chemistry.ElementTypes
 {
     public class ChemicalCompositeElement : BaseScriptableObject
     {

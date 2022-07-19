@@ -1,9 +1,7 @@
-using System;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Game.Gameplay
+namespace Gameplay
 {
     public class BaseTrigger : MonoBehaviour
     {
