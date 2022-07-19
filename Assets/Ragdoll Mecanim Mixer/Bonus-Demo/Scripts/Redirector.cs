@@ -3,9 +3,10 @@ using UnityEngine;
 
 namespace FightDemo {
     public class Redirector : MonoBehaviour {
-        public FighterController fighterController;
+        public DeprecatedFighterController fighterController;
         public EnemyController enemyController;
         public HitController hitController;
         public RamecanMixer ramecanMixer;
+        public MonoBehaviour testMono;
     }
 }

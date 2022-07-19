@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 namespace FightDemo {
-    public class FighterController : CharController {
+    public class DeprecatedFighterController : CharController {
         public Transform target;
         public Vector3 lookAtPos;
         public float lookAtTimer;
