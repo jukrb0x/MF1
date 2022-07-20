@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 4488448800445966836}
   - component: {fileID: 208418252975175044}
   m_Layer: 8
-  m_Name: RagdollPlayer
+  m_Name: OldRagdollPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
