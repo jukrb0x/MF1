@@ -17,10 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 843b759751a691746a47e781a7b458fc
   m_SerializeEntries:
-  - m_GUID: e9017d5f96b9f09489b4b37e1d6eb914
-    m_Address: Assets/Scenes/Playground.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: d2809ab9b90eea7419d8d90d4c505d35
     m_Address: Assets/RPGPP_LT/Scene/rpgpp_lt_scene_1.0.unity
     m_ReadOnly: 0
