@@ -2947,7 +2947,7 @@ PrefabInstance:
     - target: {fileID: 8894856259471134341, guid: b21f208237dfa604184a809772254745,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 77.186
+      value: 76.6
       objectReference: {fileID: 0}
     - target: {fileID: 8894856259471134341, guid: b21f208237dfa604184a809772254745,
         type: 3}
@@ -4830,6 +4830,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RagdollPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 208418252975175048, guid: 60111d252849bd947b8e58b4bbae87a8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 697956681542971186, guid: 60111d252849bd947b8e58b4bbae87a8,
         type: 3}
