@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterController : MonoBehaviour
+public class FatController : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     [SerializeField] private ConfigurableJoint hipJoint;
@@ -21,8 +21,10 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+#if !ENABLE_INPUT_SYSTEM
         float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        float vertical = Input.GetAxisRaw("Vertica`l");
+#endif
         
         // jump
         if (Input.GetButtonDown("Jump") || isGrounded)
