@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 817685260}
   - component: {fileID: 817685262}
   m_Layer: 8
-  m_Name: MatchstickMan
+  m_Name: Stickman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
