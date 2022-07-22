@@ -9,7 +9,7 @@ namespace Chubby
         [SerializeField] private ConfigurableJoint hipJoint;
         [SerializeField] private Rigidbody hip;
         [SerializeField] private Animator targetAnimator;
-        private PlayerInputs _playerInputs;
+        private InputEvents _inputEvents;
         private bool isGrounded;
 
         private bool walk;
@@ -17,7 +17,7 @@ namespace Chubby
         // Start is called before the first frame update
         private void Start()
         {
-            _playerInputs = GetComponent<PlayerInputs>();
+            _inputEvents = GetComponent<InputEvents>();
         }
 
         // Update is called once per frame
@@ -27,18 +27,18 @@ namespace Chubby
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 #else
-            var horizontal = _playerInputs.move.x;
-            var vertical = _playerInputs.move.y;
+            var horizontal = _inputEvents.move.x;
+            var vertical = _inputEvents.move.y;
             var direction = new Vector3(horizontal, 0f, vertical).normalized;
 #endif
             // jump
-            if (_playerInputs.jump || isGrounded)
+            if (_inputEvents.jump || isGrounded)
             {
                 if (targetAnimator) targetAnimator.SetBool("Jump", true);
                 hip.AddForce(Vector3.up * speed, ForceMode.Impulse);
             }
 
-            if (_playerInputs.move.magnitude >= 0.1f) // validation, 0f is not accurate
+            if (_inputEvents.move.magnitude >= 0.1f) // validation, 0f is not accurate
             {
                 var targetAngle = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg;
 
