@@ -102,7 +102,7 @@ namespace Gameplay
 #endif
         private Animator _animator;
         private CharacterController _controller;
-        private PlayerInputs _input;
+        private InputEvents _input;
         private GameObject _mainCamera;
 
         private const float _threshold = 0.01f;
@@ -137,7 +137,7 @@ namespace Gameplay
             
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
-            _input = GetComponent<PlayerInputs>();
+            _input = GetComponent<InputEvents>();
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
             _playerInput = GetComponent<PlayerInput>();
 #else
