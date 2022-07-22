@@ -15,7 +15,7 @@ namespace ActiveRagdoll {
         public Animator Animator { get; private set; }
 
         [Header("--- INVERSE KINEMATICS ---")]
-        public bool _enableIK = true;
+        public bool _enableIK = true; // todo: see why cannot grab if IK is disable
 
         [Tooltip("Those values define the rotation range in which the target direction influences arm movement.")]
         public float minTargetDirAngle = - 30,
