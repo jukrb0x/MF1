@@ -6,6 +6,7 @@ namespace Chubby
     public class DeprecatedChubbyController : MonoBehaviour
     {
         [SerializeField] private float speed = 5f;
+        [SerializeField] private float jumpForce = 60f;
         [SerializeField] private ConfigurableJoint hipJoint;
         [SerializeField] private Rigidbody hip;
         [SerializeField] private Animator targetAnimator;
@@ -23,21 +24,19 @@ namespace Chubby
         // Update is called once per frame
         private void Update()
         {
-#if !ENABLE_INPUT_SYSTEM
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-#else
             var horizontal = _inputEvents.move.x;
             var vertical = _inputEvents.move.y;
             var direction = new Vector3(horizontal, 0f, vertical).normalized;
-#endif
+            
             // jump
-            if (_inputEvents.jump || isGrounded)
+            if (_inputEvents.jump /* && isGrounded */)
             {
                 if (targetAnimator) targetAnimator.SetBool("Jump", true);
-                hip.AddForce(Vector3.up * speed, ForceMode.Impulse);
+                hip.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                _inputEvents.jump = false;
             }
 
+            // move
             if (_inputEvents.move.magnitude >= 0.1f) // validation, 0f is not accurate
             {
                 var targetAngle = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg;
