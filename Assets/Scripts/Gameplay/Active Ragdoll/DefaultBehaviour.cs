@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ActiveRagdoll;
 
+// the base class
 /// <summary> Default behaviour of an Active Ragdoll </summary>
 public class DefaultBehaviour : MonoBehaviour {
     // Author: Sergio Abreu García | https://sergioabreu.me
