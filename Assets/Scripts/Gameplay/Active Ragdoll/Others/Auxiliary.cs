@@ -4,20 +4,31 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ActiveRagdoll {
+namespace ActiveRagdoll
+{
     // Author: Sergio Abreu García | https://sergioabreu.me
 
-    [Serializable] public struct JointDriveConfig {
+    [Serializable]
+    public struct JointDriveConfig
+    {
+        public static readonly JointDriveConfig ZERO = new()
+            {_positionSpring = 0, _positionDamper = 0, _maximumForce = 0};
+
         // Variables are exposed in the editor, but are kept readonly from code since
         // changing them would have no effect until assigned to a JointDrive.
         [SerializeField] private float _positionSpring, _positionDamper, _maximumForce;
-        public float PositionSpring { get { return _positionSpring; } }
-        public float PositionDamper { get { return _positionDamper; } }
-        public float MaximumForce { get { return _maximumForce; } }
+
+        public float PositionSpring => _positionSpring;
+
+        public float PositionDamper => _positionDamper;
+
+        public float MaximumForce => _maximumForce;
 
 
-        public static explicit operator JointDrive(JointDriveConfig config) {
-            JointDrive jointDrive = new JointDrive {
+        public static explicit operator JointDrive(JointDriveConfig config)
+        {
+            var jointDrive = new JointDrive
+            {
                 positionSpring = config._positionSpring,
                 positionDamper = config._positionDamper,
                 maximumForce = config._maximumForce
@@ -26,8 +37,10 @@ namespace ActiveRagdoll {
             return jointDrive;
         }
 
-        public static explicit operator JointDriveConfig(JointDrive jointDrive) {
-            JointDriveConfig jointDriveConfig = new JointDriveConfig {
+        public static explicit operator JointDriveConfig(JointDrive jointDrive)
+        {
+            var jointDriveConfig = new JointDriveConfig
+            {
                 _positionSpring = jointDrive.positionSpring,
                 _positionDamper = jointDrive.positionDamper,
                 _maximumForce = jointDrive.maximumForce
@@ -36,11 +49,10 @@ namespace ActiveRagdoll {
             return jointDriveConfig;
         }
 
-        public readonly static JointDriveConfig ZERO = new JointDriveConfig
-                               { _positionSpring = 0, _positionDamper = 0, _maximumForce = 0};
-
-        public static JointDriveConfig operator *(JointDriveConfig config, float multiplier) {
-            return new JointDriveConfig {
+        public static JointDriveConfig operator *(JointDriveConfig config, float multiplier)
+        {
+            return new JointDriveConfig
+            {
                 _positionSpring = config.PositionSpring * multiplier,
                 _positionDamper = config.PositionDamper * multiplier,
                 _maximumForce = config.MaximumForce * multiplier
@@ -49,27 +61,32 @@ namespace ActiveRagdoll {
     }
 
     [Serializable]
-    public class BodyPart {
+    public class BodyPart
+    {
         public string bodyPartName;
 
         [SerializeField] private List<ConfigurableJoint> _joints;
+
+        [SerializeField] private float _strengthScale = 1;
         private List<JointDriveConfig> XjointDriveConfigs;
         private List<JointDriveConfig> YZjointDriveConfigs;
 
-        [SerializeField] private float _strengthScale = 1;
-        public float StrengthScale { get { return _strengthScale; } }
-        
 
-        public BodyPart(string name, List<ConfigurableJoint> joints) {
+        public BodyPart(string name, List<ConfigurableJoint> joints)
+        {
             bodyPartName = name;
             _joints = joints;
         }
 
-        public void Init() {
+        public float StrengthScale => _strengthScale;
+
+        public void Init()
+        {
             XjointDriveConfigs = new List<JointDriveConfig>();
             YZjointDriveConfigs = new List<JointDriveConfig>();
 
-            foreach (ConfigurableJoint joint in _joints) {
+            foreach (var joint in _joints)
+            {
                 XjointDriveConfigs.Add((JointDriveConfig) joint.angularXDrive);
                 YZjointDriveConfigs.Add((JointDriveConfig) joint.angularYZDrive);
             }
@@ -77,8 +94,10 @@ namespace ActiveRagdoll {
             _strengthScale = 1;
         }
 
-        public void SetStrengthScale(float scale) {
-            for (int i = 0; i < _joints.Count; i++) {
+        public void SetStrengthScale(float scale)
+        {
+            for (var i = 0; i < _joints.Count; i++)
+            {
                 _joints[i].angularXDrive = (JointDrive) (XjointDriveConfigs[i] * scale);
                 _joints[i].angularYZDrive = (JointDrive) (YZjointDriveConfigs[i] * scale);
             }
@@ -87,11 +106,14 @@ namespace ActiveRagdoll {
         }
     }
 
-    [Serializable] public struct JointMotionsConfig {
+    [Serializable]
+    public struct JointMotionsConfig
+    {
         public ConfigurableJointMotion angularXMotion, angularYMotion, angularZMotion;
         public float angularXLimit, angularYLimit, angularZLimit;
 
-        public void ApplyTo(ref ConfigurableJoint joint) {
+        public void ApplyTo(ref ConfigurableJoint joint)
+        {
             joint.angularXMotion = angularXMotion;
             joint.angularYMotion = angularYMotion;
             joint.angularZMotion = angularZMotion;
@@ -112,16 +134,17 @@ namespace ActiveRagdoll {
         }
     }
 
-    public static class Auxiliary {
+    public static class Auxiliary
+    {
         /// <summary>
-        /// Calculates the normalized projection of the Vector3 'vec'
-        /// onto the horizontal plane defined by the orthogonal vector (0, 1, 0)
+        ///     Calculates the normalized projection of the Vector3 'vec'
+        ///     onto the horizontal plane defined by the orthogonal vector (0, 1, 0)
         /// </summary>
         /// <param name="vec">The vector to project</param>
         /// <returns>The normalized projection of 'vec' onto the horizontal plane</returns>
-        public static Vector3 GetFloorProjection(in Vector3 vec) {
+        public static Vector3 GetFloorProjection(in Vector3 vec)
+        {
             return Vector3.ProjectOnPlane(vec, Vector3.up).normalized;
         }
     }
-
 }
