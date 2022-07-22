@@ -11,9 +11,9 @@ namespace Chubby
         [SerializeField] private Rigidbody hip;
         [SerializeField] private Animator targetAnimator;
         private InputEvents _inputEvents;
-        private bool isGrounded;
+        private bool _isGrounded;
 
-        private bool walk;
+        private bool _walking;
 
         // Start is called before the first frame update
         private void Start()
@@ -28,37 +28,50 @@ namespace Chubby
             var vertical = _inputEvents.move.y;
             var direction = new Vector3(horizontal, 0f, vertical).normalized;
             
-            // jump
-            if (_inputEvents.jump /* && isGrounded */)
-            {
-                if (targetAnimator) targetAnimator.SetBool("Jump", true);
-                hip.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                _inputEvents.jump = false;
-            }
 
             // move
             if (_inputEvents.move.magnitude >= 0.1f) // validation, 0f is not accurate
             {
+                Move(direction);
+            }
+            else
+            {
+                _walking = false;
+            }
+            
+            // jump
+            if (_inputEvents.jump /* && isGrounded */)
+            {
+                Jump();
+            }
+
+            if (targetAnimator) targetAnimator.SetBool("Walk", _walking);
+        }
+
+        private void GroundCheck()
+        {
+            // todo
+            _isGrounded = false;
+        }
+
+
+        private void Move( Vector3 direction)
+        {
+            
                 var targetAngle = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg;
 
                 hipJoint.targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
 
                 hip.AddForce(direction * speed);
 
-                walk = true;
-            }
-            else
-            {
-                walk = false;
-            }
-
-            if (targetAnimator) targetAnimator.SetBool("Walk", walk);
+                _walking = true;
         }
 
-        private void GroundCheck()
+        private void Jump()
         {
-            // todo
-            isGrounded = false;
+                if (targetAnimator) targetAnimator.SetBool("Jump", true);
+                hip.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                _inputEvents.jump = false;
         }
     }
 }
