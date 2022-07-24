@@ -34,6 +34,7 @@ namespace ActiveRagdoll
             SetTargetRotationInternal(joint, targetWorldRotation, startWorldRotation, Space.World);
         }
 
+        // not pure function, joint is modified
         private static void SetTargetRotationInternal(ConfigurableJoint joint, Quaternion targetRotation,
             Quaternion startRotation, Space space)
         {

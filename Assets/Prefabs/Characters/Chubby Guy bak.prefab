@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1299787919}
   - component: {fileID: 1299787920}
   m_Layer: 0
-  m_Name: Chubby Guy
+  m_Name: Chubby Guy bak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,8 +31,8 @@ Transform:
   m_LocalScale: {x: 0.6376, y: 0.6376, z: 0.6376}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8953193643338536660}
   - {fileID: 8953193644086684292}
+  - {fileID: 8953193643338536660}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -113,7 +113,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 2a8dedd11b00409468e3117b39a73d74,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2a8dedd11b00409468e3117b39a73d74,
         type: 3}
@@ -232,7 +232,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2a8dedd11b00409468e3117b39a73d74,
         type: 3}
       propertyPath: m_Name
-      value: Physical
+      value: ActiveRagdoll
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2a8dedd11b00409468e3117b39a73d74,
         type: 3}
@@ -2490,7 +2490,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 2a8dedd11b00409468e3117b39a73d74,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2a8dedd11b00409468e3117b39a73d74,
         type: 3}
@@ -2715,7 +2715,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2a8dedd11b00409468e3117b39a73d74,
         type: 3}
       propertyPath: m_Name
-      value: Animated
+      value: CharacterAnim
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2a8dedd11b00409468e3117b39a73d74,
         type: 3}
