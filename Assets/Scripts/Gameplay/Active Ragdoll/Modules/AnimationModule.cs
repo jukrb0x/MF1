@@ -110,6 +110,7 @@ namespace ActiveRagdoll {
             _targetDirVerticalPercent = 1 - Mathf.Clamp01((directionAngle - minTargetDirAngle) / Mathf.Abs(maxTargetDirAngle - minTargetDirAngle));
         }
 
+        // turn around the head to the look-at point
         private void UpdateLookIK() {
             float lookVerticalAngle = _targetDirVerticalPercent * Mathf.Abs(maxLookAngle - minLookAngle) + minLookAngle;
             lookVerticalAngle += lookAngleOffset;

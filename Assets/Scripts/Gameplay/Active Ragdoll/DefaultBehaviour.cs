@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ActiveRagdoll;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Serialization;
 
 // the base class
 /// <summary> Default behaviour of an Active Ragdoll </summary>
@@ -17,6 +19,7 @@ public class DefaultBehaviour : MonoBehaviour
 
     [Header("Movement")] [SerializeField] private bool _enableMovement = true;
     private Vector2 _movement;
+    public float movementSpeed;
 
     private Vector3 _aimDirection;
 
@@ -45,6 +48,7 @@ public class DefaultBehaviour : MonoBehaviour
         _activeRagdoll.Input.OnLeftArmDelegates += _gripModule.UseLeftGrip;
         _activeRagdoll.Input.OnRightArmDelegates += _animationModule.UseRightArm;
         _activeRagdoll.Input.OnRightArmDelegates += _gripModule.UseRightGrip;
+        
     }
 
     private void Update()
@@ -64,7 +68,10 @@ public class DefaultBehaviour : MonoBehaviour
         }
 
         _animationModule.Animator.SetBool("moving", true);
-        _animationModule.Animator.SetFloat("speed", _movement.magnitude);
+        _animationModule.Animator.SetFloat("speed", _movement.magnitude); // this only change the anim
+        // todo:
+        // _animationModule.Animator.speed = movementSpeed;
+        
 
         float angleOffset = Vector2.SignedAngle(_movement, Vector2.up);
         Vector3 targetForward =

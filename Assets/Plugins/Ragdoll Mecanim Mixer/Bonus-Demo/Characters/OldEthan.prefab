@@ -4052,7 +4052,7 @@ GameObject:
   - component: {fileID: 6775379066140413926}
   - component: {fileID: 6881802548701205158}
   m_Layer: 0
-  m_Name: Ethan
+  m_Name: OldEthan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -107,8 +107,7 @@ namespace ActiveRagdoll
                     var rot = Quaternion.FromToRotation(_activeRagdoll.PhysicalTorso.transform.up,
                         Vector3.up).normalized;
 
-                    _activeRagdoll.PhysicalTorso.AddTorque(new Vector3(rot.x, rot.y, rot.z)
-                                                           * uprightTorque * balancePercent);
+                    _activeRagdoll.PhysicalTorso.AddTorque(new Vector3(rot.x, rot.y, rot.z) * (uprightTorque * balancePercent));
 
                     var directionAnglePercent = Vector3.SignedAngle(_activeRagdoll.PhysicalTorso.transform.forward,
                         TargetDirection, Vector3.up) / 180;
@@ -164,7 +163,6 @@ namespace ActiveRagdoll
 #if UNITY_EDITOR
                 Debug.LogWarning("SetBalanceMode was called but the mode selected was the same as " +
                                  "the current one. No changes made.");
-                ;
 #endif
                 return;
             }
