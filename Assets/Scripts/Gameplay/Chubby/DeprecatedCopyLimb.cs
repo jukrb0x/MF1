@@ -21,11 +21,16 @@ public class DeprecatedCopyLimb : MonoBehaviour
 
     private void FixedUpdate()
     {
-        SyncPhysics();
+        SyncRotation();
     }
 
-    private void SyncPhysics()
+    /// <summary>
+    ///   set physical limb rotation to match animated limb rotation.
+    ///   the animated rotation should be cached in the <c>Start()</c>
+    /// </summary>
+    private void SyncRotation()
     {
+        // todo: the position can be synced as well
         Quaternion localRotation = animatedLimb.transform.localRotation;
         _configurableJoint.targetRotation = Quaternion.Inverse(localRotation) * _lastAnimatedRotation;
     }
