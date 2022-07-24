@@ -102,7 +102,8 @@ namespace ActiveRagdoll
             _smoothedLookPoint =
                 Vector3.Lerp(_smoothedLookPoint, movedLookPoint, smooth ? smoothSpeed * Time.deltaTime : 1);
 
-            Camera.transform.position = _smoothedLookPoint - (_startDirection * _currentDistance);
+            Camera.transform.position = _smoothedLookPoint - (_startDirection * _currentDistance); // todo
+            // camera rotates around the look point, about the axis right/up,  by degree of _cameraRotation
             Camera.transform.RotateAround(_smoothedLookPoint, Vector3.right, _cameraRotation.y);
             Camera.transform.RotateAround(_smoothedLookPoint, Vector3.up, _cameraRotation.x);
             Camera.transform.LookAt(_smoothedLookPoint);

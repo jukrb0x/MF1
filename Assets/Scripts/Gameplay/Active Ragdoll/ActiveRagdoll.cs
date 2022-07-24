@@ -71,7 +71,7 @@ namespace ActiveRagdoll
         [Header("--- ANIMATORS ---")] [SerializeField]
         private Animator _animatedAnimator;
 
-        [SerializeField] private Animator _physicalAnimator;
+        [SerializeField] private Animator _physicalAnimator; // useful in getting bones by id
 
         public Animator AnimatedAnimator
         {
@@ -86,12 +86,15 @@ namespace ActiveRagdoll
 
         public bool SyncTorsoRotations { get; set; } = true;
 
+        // only validate data in this event function
         private void OnValidate()
         {
-            // Automatically retrieve the necessary references
+            // -- auto retrieve references in the hierarchy --
             var animators = GetComponentsInChildren<Animator>();
             if (animators.Length >= 2)
             {
+                // animated is above physical in the hierarchy
+                // otherwise the order will be messed up
                 if (_animatedAnimator == null) _animatedAnimator = animators[0];
                 if (_physicalAnimator == null) _physicalAnimator = animators[1];
 

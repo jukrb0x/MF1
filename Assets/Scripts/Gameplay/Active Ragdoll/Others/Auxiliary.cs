@@ -72,6 +72,7 @@ namespace ActiveRagdoll
         private List<JointDriveConfig> YZjointDriveConfigs;
 
 
+        // what we want is configurable joints
         public BodyPart(string name, List<ConfigurableJoint> joints)
         {
             bodyPartName = name;
