@@ -380,6 +380,7 @@ MonoBehaviour:
   _gripModule: {fileID: 817685260}
   _cameraModule: {fileID: 1014210315}
   _enableMovement: 1
+  movementSpeed: 0
 --- !u!1001 &8894856259217946875
 PrefabInstance:
   m_ObjectHideFlags: 0
