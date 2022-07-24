@@ -4,6 +4,7 @@ namespace ActiveRagdoll
 {
     // Author: Sergio Abreu García | https://sergioabreu.me
 
+    // this will be activated once the player is gripping
     public class Gripper : MonoBehaviour
     {
         private Grippable _gripped;

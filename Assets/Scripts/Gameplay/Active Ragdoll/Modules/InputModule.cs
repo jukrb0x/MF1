@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -64,6 +65,11 @@ namespace ActiveRagdoll
         void Update()
         {
             UpdateOnFloor();
+        }
+
+        private void OnApplicationFocus(bool hasFocus)
+        {
+            Cursor.lockState = hasFocus ? CursorLockMode.Locked : CursorLockMode.None;
         }
 
         public delegate void onFloorChangedDelegate(bool onFloor);
