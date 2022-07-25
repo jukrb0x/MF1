@@ -11,12 +11,25 @@ namespace Gameplay.Chemistry
         public ReactionSO reaction;
         private List<Reactant> reactants;
         private List<Product> products;
+        public Transform productLocation;
         private int _coolDownTime;
 
         private void Start()
         {
             reactants = new List<Reactant>();
             products = new List<Product>();
+            if (productLocation == null)
+            {
+                Transform[] t = transform.GetComponentsInChildren<Transform>();
+                foreach (var i in t)
+                {
+                    if (i.gameObject.transform != null && i.gameObject.name == "ProductLocation")
+                    {
+                        productLocation = i.gameObject.transform;
+                    }
+                }
+                
+            }
             InvokeRepeating("CollDown", 1, 1);
         }
 
@@ -83,8 +96,8 @@ namespace Gameplay.Chemistry
 
             foreach (Product prod in reaction.products)
             {
-                var o = gameObject;
-                var newProd = Instantiate(prod, o.transform.position, o.transform.rotation);
+                var o = productLocation;
+                var newProd = Instantiate(prod, o.position, o.rotation);
             }
             
             
