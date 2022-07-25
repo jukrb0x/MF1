@@ -93,7 +93,7 @@ namespace ActiveRagdoll
             if (CurrentLookMode == LookMode.TARGET) lookPos = LookTarget.position;
             if (CurrentLookMode == LookMode.POINT) lookPos = LookPoint;
 
-            _animator.SetLookAtPosition(lookPos);
+            _animator.SetLookAtPosition(lookPos); // head look-at IK
 
             // Left arm
             _animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, _currentLeftArmIKWeight);
