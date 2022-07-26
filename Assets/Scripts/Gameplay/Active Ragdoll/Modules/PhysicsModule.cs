@@ -226,5 +226,13 @@ namespace ActiveRagdoll
         {
             _torqueInput = torqueInput;
         }
+
+
+        public void JustTest()
+        {
+
+            Rigidbody rb = new Rigidbody();
+
+        }
     }
 } // namespace ActiveRagdoll
