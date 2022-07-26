@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137e08f558354b1292c4597b8d36ed46, type: 3}
   m_Name: Reaction
   m_EditorClassIdentifier: 
-  description: R1 + R2 = P1
+  description: 2 R1 + R2 = P1
   reactants:
   - {fileID: 217321574543179731, guid: 0f93d97ac712644429c206aa76833d5d, type: 3}
   - {fileID: 1944930634830549038, guid: 57750b7fded9ef74d83231b7fb349e8d, type: 3}
