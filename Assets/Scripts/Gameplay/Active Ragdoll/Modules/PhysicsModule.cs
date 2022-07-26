@@ -97,6 +97,8 @@ namespace ActiveRagdoll
         {
             UpdateTargetRotation();
             ApplyCustomDrag();
+            
+            Debug.Log("current balance mode: " + _balanceMode);
 
             switch (_balanceMode)
             {
@@ -123,6 +125,7 @@ namespace ActiveRagdoll
 
                 case BALANCE_MODE.STABILIZER_JOINT:
                     // Move stabilizer to player torso (useless, but improves clarity)
+                    // fixme: this should be done by AddForce, otherwise doesn't work for the speed.
                     _stabilizerRigidbody.MovePosition(_activeRagdoll.PhysicalTorso.position);
                     _stabilizerRigidbody.MoveRotation(_targetRotation);
 
@@ -132,6 +135,7 @@ namespace ActiveRagdoll
                     if (_activeRagdoll.PhysicalTorso.angularVelocity.magnitude < maxManualRotSpeed)
                     {
                         var force = _torqueInput * manualTorque;
+                        Debug.Log(force);
                         _activeRagdoll.PhysicalTorso.AddRelativeTorque(force.y, 0, force.x);
                     }
 

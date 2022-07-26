@@ -153,6 +153,7 @@ namespace ActiveRagdoll {
             Animator.SetFloat("speed", speed);
         }
         
+        // todo: use xxx arm only works when IK is enable
         public void UseLeftArm(float weight) {
             if (!_enableIK)
                 return;
