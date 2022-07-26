@@ -98,7 +98,6 @@ namespace ActiveRagdoll
             UpdateTargetRotation();
             ApplyCustomDrag();
             
-            Debug.Log("current balance mode: " + _balanceMode);
 
             switch (_balanceMode)
             {
@@ -135,7 +134,6 @@ namespace ActiveRagdoll
                     if (_activeRagdoll.PhysicalTorso.angularVelocity.magnitude < maxManualRotSpeed)
                     {
                         var force = _torqueInput * manualTorque;
-                        Debug.Log(force);
                         _activeRagdoll.PhysicalTorso.AddRelativeTorque(force.y, 0, force.x);
                     }
 
