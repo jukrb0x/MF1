@@ -33,6 +33,7 @@ namespace ActiveRagdoll
         }
 
 
+        // fixme: the grip should be enable when weight < threshold
         public void UseLeftGrip(float weight)
         {
             _leftGrip.enabled = weight > leftArmWeightThreshold;
