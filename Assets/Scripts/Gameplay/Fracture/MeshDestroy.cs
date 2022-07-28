@@ -15,10 +15,20 @@ public class MeshDestroy : MonoBehaviour
     private Vector2 edgeUV = Vector2.zero;
     private Plane edgePlane = new Plane();
 
-    public int CutCascades = 1;
+    public int CutCascades = 1; // don't make it too large
     public float ExplodeForce = 0;
+    public bool isDestory = false;
 
-   private void DestroyMesh()
+    private void OnValidate()
+    {
+        if (isDestory == true)
+        {
+            DestroyMesh();
+        }
+        
+    }
+
+    private void DestroyMesh()
     {
         var originalMesh = GetComponent<MeshFilter>().mesh;
         originalMesh.RecalculateBounds();
