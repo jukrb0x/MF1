@@ -5,10 +5,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-namespace Gameplay.Fracture
+namespace Gameplay.Fracture.Quick
 {
-    public class MeshRamdomFracturer : MonoBehaviour
+    public class MeshFracturer : MonoBehaviour
     {
         private bool _edgeSet = false;
         private Vector3 _edgeVertex = Vector3.zero;
@@ -18,7 +17,7 @@ namespace Gameplay.Fracture
         // the number of fragments is multiplied by the cut level
         public int cutLevel = 1; // don't make it too large
         public float explodeForce = 0;
-        public bool isExplode;
+        [Header("Explosion")] public bool isExplode;
         public float explosionRadius = 1;
 
         // --- test code ---
@@ -122,7 +121,7 @@ namespace Gameplay.Fracture
                                     (sideB ? 1 : 0) +
                                     (sideC ? 1 : 0);
 
-                    if (sideCount == 0)
+                    if (sideCount == 0) // all right
                     {
                         continue;
                     }
@@ -141,19 +140,22 @@ namespace Gameplay.Fracture
                     // cut points
                     var singleIndex = sideB == sideC ? 0 : sideA == sideC ? 1 : 2;
 
+                    // Ray 1
                     ray1.origin = original.Vertices[triangles[j + singleIndex]];
-                    var dir1 = original.Vertices[triangles[j + ((singleIndex + 1) % 3)]] -
-                               original.Vertices[triangles[j + singleIndex]];
+                    var dir1 = original.Vertices[triangles[j + ((singleIndex + 1) % 3)]] - ray1.origin;
                     ray1.direction = dir1;
                     plane.Raycast(ray1, out var enter1);
                     var lerp1 = enter1 / dir1.magnitude;
 
+                    // Ray 2
                     ray2.origin = original.Vertices[triangles[j + singleIndex]];
-                    var dir2 = original.Vertices[triangles[j + ((singleIndex + 2) % 3)]] -
-                               original.Vertices[triangles[j + singleIndex]];
+                    var dir2 = original.Vertices[triangles[j + ((singleIndex + 2) % 3)]] - ray2.origin;
                     ray2.direction = dir2;
                     plane.Raycast(ray2, out var enter2);
                     var lerp2 = enter2 / dir2.magnitude;
+                    
+                    
+                    // Ray 1 and Ray 2 share the same origin
 
                     // first vertex = anchor
                     AddEdge(i,
@@ -226,7 +228,8 @@ namespace Gameplay.Fracture
             return fragmesh;
         }
 
-        private void AddEdge(int subMesh, FragmentMeshData fragmentMeshData, Vector3 normal, Vector3 vertex1, Vector3 vertex2,
+        private void AddEdge(int subMesh, FragmentMeshData fragmentMeshData, Vector3 normal, Vector3 vertex1,
+            Vector3 vertex2,
             Vector2 uv1,
             Vector2 uv2)
         {
