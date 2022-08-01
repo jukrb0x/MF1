@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Gameplay.Fracture
+namespace Gameplay.Fracture.Quick
 {
     // Data Structure for storing fracture pieces
     public class FragmentMeshData
@@ -10,6 +10,7 @@ namespace Gameplay.Fracture
         private List<Vector3> _Normals = new List<Vector3>();
         private List<List<int>> _Triangles = new List<List<int>>();
         private List<Vector2> _UVs = new List<Vector2>();
+        
         public Vector3[] Vertices;
         public Vector3[] Normals;
         public int[][] Triangles;
@@ -55,7 +56,7 @@ namespace Gameplay.Fracture
                 Triangles[i] = _Triangles[i].ToArray();
         }
 
-        public void MakeFragMeshObj(MeshRamdomFracturer original)
+        public void MakeFragMeshObj(MeshFracturer original)
         {
             FragmentMeshObj = new GameObject(original.name);
             var transform = original.transform;
@@ -83,7 +84,7 @@ namespace Gameplay.Fracture
             collider.convex = true;
 
             var rigidbody = FragmentMeshObj.AddComponent<Rigidbody>();
-            var meshDestroy = FragmentMeshObj.AddComponent<MeshRamdomFracturer>(); // sub-meshes can be destroyed by this component
+            var meshDestroy = FragmentMeshObj.AddComponent<MeshFracturer>(); // sub-meshes can be destroyed by this component
             meshDestroy.cutLevel = original.cutLevel;
             meshDestroy.explodeForce = original.explodeForce;
         }
