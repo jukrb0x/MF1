@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Gameplay.Fracture.Quick
+namespace Gameplay.FractureSimple
 {
     // Data Structure for storing fracture pieces
     public class FragmentMeshData
