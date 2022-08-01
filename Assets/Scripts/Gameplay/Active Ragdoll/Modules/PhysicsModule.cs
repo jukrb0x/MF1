@@ -97,8 +97,9 @@ namespace ActiveRagdoll
         {
             UpdateTargetRotation();
             ApplyCustomDrag();
-            
 
+
+            Vector2 force;
             switch (_balanceMode)
             {
                 case BALANCE_MODE.UPRIGHT_TORQUE:
@@ -125,21 +126,22 @@ namespace ActiveRagdoll
                 case BALANCE_MODE.STABILIZER_JOINT:
                     // Move stabilizer to player torso (useless, but improves clarity)
                     // fixme: this should be done by AddForce, otherwise doesn't work for the speed.
-                    _stabilizerRigidbody.MovePosition(_activeRagdoll.PhysicalTorso.position);
-                    _stabilizerRigidbody.MoveRotation(_targetRotation);
+                    // todo: where are they updated?
+                    // _stabilizerRigidbody.MovePosition(_activeRagdoll.PhysicalTorso.position);
+                    // _stabilizerRigidbody.MoveRotation(_targetRotation);
+                        force = _torqueInput * manualTorque;
+                        _activeRagdoll.PhysicalTorso.AddRelativeTorque(force.y, 0, force.x);
 
                     break;
 
                 case BALANCE_MODE.MANUAL_TORQUE:
                     if (_activeRagdoll.PhysicalTorso.angularVelocity.magnitude < maxManualRotSpeed)
                     {
-                        var force = _torqueInput * manualTorque;
+                        force = _torqueInput * manualTorque;
                         _activeRagdoll.PhysicalTorso.AddRelativeTorque(force.y, 0, force.x);
                     }
 
                     break;
-
-                default: break;
             }
         }
 
