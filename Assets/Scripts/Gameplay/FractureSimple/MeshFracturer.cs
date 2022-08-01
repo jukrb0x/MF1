@@ -1,11 +1,10 @@
 // script originated from
 // https://gist.github.com/ditzel/73f4d1c9028cc3477bb921974f84ed56
 
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Gameplay.Fracture.Quick
+namespace Gameplay.FractureSimple
 {
     public class MeshFracturer : MonoBehaviour
     {
@@ -259,7 +258,6 @@ namespace Gameplay.Fracture.Quick
         private void OnCollisionEnter(Collision collision)
         {
             // todo
-            throw new NotImplementedException();
         }
     }
 }
