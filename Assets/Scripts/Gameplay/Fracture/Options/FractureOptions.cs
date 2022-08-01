@@ -19,7 +19,7 @@ namespace Gameplay.Fracture.Options
         
         FractureOptions()
         {
-            maxFractures = 10;
+            maxFractures = 50;
             detectFloatingFragment = true;
             triggerType = TriggerType.Collision;
             minCollisionForce = 1f;
