@@ -81,7 +81,7 @@ public class DefaultBehaviour : MonoBehaviour
 
     private void ProcessFloorChanged(bool onFloor)
     {
-        if (onFloor)
+        if (onFloor) // fixme
         {
             _physicsModule.SetBalanceMode(PhysicsModule.BALANCE_MODE.STABILIZER_JOINT);
             _enableMovement = true;

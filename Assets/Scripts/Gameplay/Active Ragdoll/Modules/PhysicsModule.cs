@@ -39,8 +39,8 @@ namespace ActiveRagdoll
 
         public float rotationTorque = 500;
 
-        [Header("--- MANUAL TORQUE ---")] public float manualTorque = 500;
-        public float maxManualRotSpeed = 5;
+        [Header("--- MANUAL TORQUE ---")] public float manualTorque      = 500;
+        public                                   float maxManualRotSpeed = 5;
 
         private Vector2 _torqueInput;
 
@@ -53,12 +53,12 @@ namespace ActiveRagdoll
             set
             {
                 if (_stabilizerJoint != null)
-                    _stabilizerJoint.angularXDrive = _stabilizerJoint.angularXDrive = (JointDrive) value;
+                    _stabilizerJoint.angularXDrive = _stabilizerJoint.angularXDrive = (JointDrive)value;
             }
         }
 
-        private GameObject _stabilizerGameobject;
-        private Rigidbody _stabilizerRigidbody;
+        private GameObject        _stabilizerGameobject;
+        private Rigidbody         _stabilizerRigidbody;
         private ConfigurableJoint _stabilizerJoint;
 
         [Header("--- FREEZE ROTATIONS ---")] [SerializeField]
@@ -123,14 +123,20 @@ namespace ActiveRagdoll
 
                     break;
 
-                case BALANCE_MODE.STABILIZER_JOINT:
+                case BALANCE_MODE.STABILIZER_JOINT: // walking on the floor
                     // Move stabilizer to player torso (useless, but improves clarity)
                     // fixme: this should be done by AddForce, otherwise doesn't work for the speed.
                     // todo: where are they updated?
-                    // _stabilizerRigidbody.MovePosition(_activeRagdoll.PhysicalTorso.position);
-                    // _stabilizerRigidbody.MoveRotation(_targetRotation);
-                        force = _torqueInput * manualTorque;
-                        _activeRagdoll.PhysicalTorso.AddRelativeTorque(force.y, 0, force.x);
+                    _stabilizerRigidbody.MovePosition(_activeRagdoll.PhysicalTorso.position);
+                    _activeRagdoll.PhysicalTorso.MoveRotation(_targetRotation);
+                if(false){
+                    force = _torqueInput * manualTorque;
+                    // _activeRagdoll.PhysicalTorso.AddRelativeTorque(force.y, 0, force.x);
+                    _activeRagdoll.PhysicalTorso.AddRelativeForce(force.x, 0, force.y);
+                    
+                    // todo: this is fun can make a jump roll
+                    //        _activeRagdoll.PhysicalTorso.AddForce(force);
+                }
 
                     break;
 
@@ -189,7 +195,7 @@ namespace ActiveRagdoll
                     break;
 
                 case BALANCE_MODE.STABILIZER_JOINT:
-                    var jointDrive = (JointDrive) _stabilizerJointDrive;
+                    var jointDrive = (JointDrive)_stabilizerJointDrive;
                     _stabilizerJoint.angularXDrive = _stabilizerJoint.angularYZDrive = jointDrive;
                     break;
 
@@ -213,7 +219,7 @@ namespace ActiveRagdoll
                     break;
 
                 case BALANCE_MODE.STABILIZER_JOINT:
-                    var jointDrive = (JointDrive) JointDriveConfig.ZERO;
+                    var jointDrive = (JointDrive)JointDriveConfig.ZERO;
                     _stabilizerJoint.angularXDrive = _stabilizerJoint.angularYZDrive = jointDrive;
                     break;
 
