@@ -13,45 +13,10 @@ MonoBehaviour:
   m_Name: Readme
   m_EditorClassIdentifier: 
   icon: {fileID: 2800000, guid: 44a17a5b205fcd349a24700e6f5615bd, type: 3}
-  title: Third Person Template
+  title: MF1
   sections:
-  - heading: About this template
-    text: This template provides the foundation to build a project in the third person perspective, making use of the Starter Assets. It is powered by the Universal Render Pipeline (URP).
+  - heading: MF1 Minigame
+    text: Engjoy.
     linkText: 
     url: 
-  - heading:
-    text: Enter <b>Play</b> mode to experience the default settings of the character controller and camera.
-    linkText: 
-    url:
-  - heading: About Starter Assets
-    text: Starter Assets include first and third person character controllers, built in a modular way to provide a solid foundation for any game genre.
-    linkText: 
-    url: 
-  - heading: 
-    text: 
-    linkText: "Starter Assets: First Person Character Controller"
-    url: http://u3d.as/2z1q
-  - heading: 
-    text: 
-    linkText: "Starter Assets: Third Person Character Controller"
-    url: http://u3d.as/2z1r
-  - heading: 
-    text: The Starter Asset packages are compatible with Unity 2020 LTS and 2021 LTS. They leverage Unity's CharacterController component.
-    linkText: 
-    url: 
-  - heading: Important note
-    text: The Starter Asset packages require both Input System and Cinemachine packages
-      to work. See the documentation (Assets/StarterAssets_Documentation.pdf) for more details.
-    linkText: 
-    url: 
-  - heading: Documentation
-    text: See the full documentation (Assets/StarterAssets_Documentation.pdf)
-      for more information on how to set up the Starter Assets in a new Scene, in either
-      HDRP/URP or for mobile devices.
-    linkText: 
-    url: 
-  - heading: We want to hear your feedback
-    text: 
-    linkText: Please let us know what you think about this package.
-    url: https://unitysoftware.co1.qualtrics.com/jfe/form/SV_5cg7IkyOprbHqia?packagename=starterassets
   loadedLayout: 1
