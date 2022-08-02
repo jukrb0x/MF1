@@ -41,6 +41,7 @@ public class DefaultBehaviour : MonoBehaviour
         // possible, such as assigning those same actions to the output of an AI system.
 
         _activeRagdoll.Input.OnMoveDelegates += MovementInput;
+        _activeRagdoll.Input.OnJumpDelegates += JumpInput;
         _activeRagdoll.Input.OnMoveDelegates += _physicsModule.ManualTorqueInput;
         _activeRagdoll.Input.OnFloorChangedDelegates += ProcessFloorChanged;
 
@@ -105,5 +106,10 @@ public class DefaultBehaviour : MonoBehaviour
     private void MovementInput(Vector2 movement)
     {
         _movement = movement;
+    }
+    private void JumpInput()
+    {
+        // _physicsModule.Jump();
+        // todo: jump physics _activeRagdoll.PhysicalTorso.AddForce(force)
     }
 }

@@ -14,27 +14,34 @@ namespace ActiveRagdoll
     {
         // ---------- EXTERNAL INPUT ----------
 
-        public delegate void onMoveDelegate(Vector2 movement);
+        public delegate void OnMoveDelegate(Vector2 movement);
 
-        public onMoveDelegate OnMoveDelegates { get; set; }
+        public OnMoveDelegate OnMoveDelegates { get; set; }
 
         public void OnMove(InputValue value)
         {
             OnMoveDelegates?.Invoke(value.Get<Vector2>());
         }
 
-        public delegate void onLeftArmDelegate(float armWeight);
+        public delegate void OnJumpDelegate();
+        public OnJumpDelegate OnJumpDelegates { get; set; }
+        public void OnJump(InputValue value)
+        {
+            OnJumpDelegates?.Invoke();
+        }
 
-        public onLeftArmDelegate OnLeftArmDelegates { get; set; }
+        public delegate void OnLeftArmDelegate(float armWeight);
+
+        public OnLeftArmDelegate OnLeftArmDelegates { get; set; }
 
         public void OnLeftArm(InputValue value)
         {
             OnLeftArmDelegates?.Invoke(value.Get<float>());
         }
 
-        public delegate void onRightArmDelegate(float armWeight);
+        public delegate void OnRightArmDelegate(float armWeight);
 
-        public onRightArmDelegate OnRightArmDelegates { get; set; }
+        public OnRightArmDelegate OnRightArmDelegates { get; set; }
 
         public void OnRightArm(InputValue value)
         {
