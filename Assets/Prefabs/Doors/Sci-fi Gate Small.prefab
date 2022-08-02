@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7853872944565647075}
-  - component: {fileID: 2144468343049942196}
+  - component: {fileID: 159565646}
   m_Layer: 0
   m_Name: Sci-fi Gate Small
   m_TagString: Untagged
@@ -117,7 +117,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &2144468343049942196
+--- !u!95 &159565646
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -127,7 +127,7 @@ Animator:
   m_GameObject: {fileID: 7853872944565807811}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f95982b3fb4b204409a7765b784d9d2a, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
