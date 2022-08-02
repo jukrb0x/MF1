@@ -1,31 +1,26 @@
+using System;
 using TMPro;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 namespace Gameplay
 {
     public class BaseTrigger : MonoBehaviour
     {
-        // fixme: test code
-        private TextMeshProUGUI text;
-        [SerializeField] private GameObject player;
-        private Collider _collider;
 
+        private GameManager _gm;
 
         private void Start()
         {
-            // player = GameObject.FindWithTag("Player");
-            _collider = player.GetComponent<Collider>();
-            text = GameObject.Find("DebugMsg").GetComponent<TextMeshProUGUI>();
+            _gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         }
 
-        private void Update()
+        private void OnCollisionEnter(Collision other)
         {
-            OnTriggerStay(_collider);
-        }
-
-        private void OnTriggerStay(Collider other)
-        {
-            text.SetText("You have entered the trigger");
+            if (false) // TODO
+            {
+                _gm.SetGameState(GAME_STATE.WIN);
+            }
         }
     }
 }
