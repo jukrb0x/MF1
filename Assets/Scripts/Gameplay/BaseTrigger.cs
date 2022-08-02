@@ -9,15 +9,26 @@ namespace Gameplay
     {
 
         private GameManager _gm;
+        public GameObject gameManagerGameObject;
 
         private void Start()
         {
-            _gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+            if(gameManagerGameObject == null)
+            {
+                gameManagerGameObject = GameObject.Find("GameManager");
+            }
+            _gm = gameManagerGameObject.GetComponent<GameManager>();
+            if (_gm == null)
+            {
+                Debug.LogError("GameManager is null");
+                throw new Exception("GameManager is null");
+            }
         }
 
         private void OnCollisionEnter(Collision other)
         {
-            if (false) // TODO
+            // TODO: control the game flow
+            if (false)
             {
                 _gm.SetGameState(GAME_STATE.WIN);
             }

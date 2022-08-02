@@ -21,7 +21,7 @@ namespace Gameplay
             if (_gameState == GAME_STATE.WIN)
                 Debug.Log("You Win!");
         }
-        
+
         public void SetGameState(GAME_STATE gameState)
         {
             _gameState = gameState;

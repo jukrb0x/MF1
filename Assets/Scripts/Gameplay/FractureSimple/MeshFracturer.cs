@@ -29,6 +29,11 @@ namespace Gameplay.FractureSimple
             {
                 FractureMesh();
             }
+            
+        }
+        public void DebugFractureMesh()
+        {
+            FractureMesh();
         }
 #endif
         // --- test code end ---
