@@ -14,7 +14,7 @@ namespace Gameplay.RayKit.Options
 
         public HitOptions()
         {
-            this.onHit = null;
+            onHit = null;
         }
     }
 }
