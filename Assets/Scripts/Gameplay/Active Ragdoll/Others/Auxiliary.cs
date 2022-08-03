@@ -12,7 +12,7 @@ namespace ActiveRagdoll
     public struct JointDriveConfig
     {
         public static readonly JointDriveConfig ZERO = new()
-            {_positionSpring = 0, _positionDamper = 0, _maximumForce = 0};
+            { _positionSpring = 0, _positionDamper = 0, _maximumForce = 0 };
 
         // Variables are exposed in the editor, but are kept readonly from code since
         // changing them would have no effect until assigned to a JointDrive.
@@ -66,8 +66,8 @@ namespace ActiveRagdoll
         public string bodyPartName;
 
         [SerializeField] private List<ConfigurableJoint> _joints;
+        [SerializeField] private float                   _strengthScale = 1;
 
-        [SerializeField] private float _strengthScale = 1;
         private List<JointDriveConfig> XjointDriveConfigs;
         private List<JointDriveConfig> YZjointDriveConfigs;
 
@@ -88,8 +88,8 @@ namespace ActiveRagdoll
 
             foreach (var joint in _joints)
             {
-                XjointDriveConfigs.Add((JointDriveConfig) joint.angularXDrive);
-                YZjointDriveConfigs.Add((JointDriveConfig) joint.angularYZDrive);
+                XjointDriveConfigs.Add((JointDriveConfig)joint.angularXDrive);
+                YZjointDriveConfigs.Add((JointDriveConfig)joint.angularYZDrive);
             }
 
             _strengthScale = 1;
@@ -100,8 +100,8 @@ namespace ActiveRagdoll
             for (var i = 0; i < _joints.Count; i++)
             {
                 // they were in order to place in
-                _joints[i].angularXDrive = (JointDrive) (XjointDriveConfigs[i] * scale);
-                _joints[i].angularYZDrive = (JointDrive) (YZjointDriveConfigs[i] * scale);
+                _joints[i].angularXDrive = (JointDrive)(XjointDriveConfigs[i] * scale);
+                _joints[i].angularYZDrive = (JointDrive)(YZjointDriveConfigs[i] * scale);
             }
 
             _strengthScale = scale;
@@ -112,7 +112,7 @@ namespace ActiveRagdoll
     public struct JointMotionsConfig
     {
         public ConfigurableJointMotion angularXMotion, angularYMotion, angularZMotion;
-        public float angularXLimit, angularYLimit, angularZLimit;
+        public float                   angularXLimit,  angularYLimit,  angularZLimit;
 
         public void ApplyTo(ref ConfigurableJoint joint)
         {

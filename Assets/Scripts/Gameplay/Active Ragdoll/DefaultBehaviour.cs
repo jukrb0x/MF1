@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ActiveRagdoll;
+using Gameplay.Ragdoll;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Serialization;
 
@@ -11,15 +13,18 @@ public class DefaultBehaviour : MonoBehaviour
 {
     // Author: Sergio Abreu García | https://sergioabreu.me
 
-    [Header("Modules")] [SerializeField] private ActiveRagdoll.ActiveRagdoll _activeRagdoll;
-    [SerializeField] private PhysicsModule _physicsModule;
+    [Header("Modules")]
+    [SerializeField] private ActiveRagdoll.ActiveRagdoll _activeRagdoll;
+    [SerializeField] private PhysicsModule   _physicsModule;
     [SerializeField] private AnimationModule _animationModule;
-    [SerializeField] private GripModule _gripModule;
-    [SerializeField] private CameraModule _cameraModule;
+    [SerializeField] private GripModule      _gripModule;
+    [SerializeField] private CameraModule    _cameraModule;
 
-    [Header("Movement")] [SerializeField] private bool _enableMovement = true;
+    [Header("Movement")]
+    [SerializeField] private bool _enableMovement = true;
     private Vector2 _movement;
-    public float movementSpeed;
+
+    [Range(1, 5)] public float movementSpeed = 1;
 
     private Vector3 _aimDirection;
 
@@ -49,7 +54,7 @@ public class DefaultBehaviour : MonoBehaviour
         _activeRagdoll.Input.OnLeftArmDelegates += _gripModule.UseLeftGrip;
         _activeRagdoll.Input.OnRightArmDelegates += _animationModule.UseRightArm;
         _activeRagdoll.Input.OnRightArmDelegates += _gripModule.UseRightGrip;
-        
+
     }
 
     private void Update()
@@ -68,11 +73,16 @@ public class DefaultBehaviour : MonoBehaviour
             return;
         }
 
+        // animator controls the movement
+        // forward is set to the physical and update in FixedUpdate
         _animationModule.Animator.SetBool("moving", true);
-        _animationModule.Animator.SetFloat("speed", _movement.magnitude); // this only change the anim
+        _animationModule.Animator.SetFloat("speed", _movement.magnitude * movementSpeed); // this only change the anim
+        
         // todo:
         // _animationModule.Animator.speed = movementSpeed;
-        
+        // todo: jump here
+
+
 
         float angleOffset = Vector2.SignedAngle(_movement, Vector2.up);
         Vector3 targetForward =
@@ -109,7 +119,6 @@ public class DefaultBehaviour : MonoBehaviour
     }
     private void JumpInput()
     {
-        // _physicsModule.Jump();
-        // todo: jump physics _activeRagdoll.PhysicalTorso.AddForce(force)
+        _physicsModule.JumpState = true;
     }
 }
