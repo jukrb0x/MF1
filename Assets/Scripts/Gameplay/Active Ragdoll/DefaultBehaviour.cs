@@ -91,7 +91,7 @@ public class DefaultBehaviour : MonoBehaviour
             _activeRagdoll.GetBodyPart("Left Leg")?.SetStrengthScale(1);
             _animationModule.PlayAnimation("Idle");
         }
-        else
+        else // not on floor, try to balance?
         {
             _physicsModule.SetBalanceMode(PhysicsModule.BALANCE_MODE.MANUAL_TORQUE);
             _enableMovement = false;

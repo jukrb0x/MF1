@@ -2,36 +2,38 @@ using System;
 using TMPro;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Gameplay
 {
     public class BaseTrigger : MonoBehaviour
     {
 
-        private GameManager _gm;
-        public GameObject gameManagerGameObject;
+        private GameObject  _gameManagerGameObject;
+        public  GameManager gameManager;
+        public  UnityEvent  onTriggerOn;
+        public  UnityEvent  onTriggerOff;
 
         private void Start()
         {
-            if(gameManagerGameObject == null)
+            // fixme: auto finding is not always working for some reason
+            if (gameManager == null)
             {
-                gameManagerGameObject = GameObject.Find("GameManager");
-            }
-            _gm = gameManagerGameObject.GetComponent<GameManager>();
-            if (_gm == null)
-            {
-                Debug.LogError("GameManager is null");
-                throw new Exception("GameManager is null");
+                _gameManagerGameObject = GameObject.Find("GameManager");
+                if (_gameManagerGameObject != null)
+                {
+                    gameManager = _gameManagerGameObject.GetComponent<GameManager>();
+                    if (gameManager == null)
+                    {
+                        Debug.LogError("GameManager Component not found");
+                    }
+                }
+                else
+                {
+                    Debug.LogError("GameManager Game Object not found");
+                }
             }
         }
 
-        private void OnCollisionEnter(Collision other)
-        {
-            // TODO: control the game flow
-            if (false)
-            {
-                _gm.SetGameState(GAME_STATE.WIN);
-            }
-        }
     }
 }

@@ -99,6 +99,7 @@ namespace ActiveRagdoll
         {
             for (var i = 0; i < _joints.Count; i++)
             {
+                // they were in order to place in
                 _joints[i].angularXDrive = (JointDrive) (XjointDriveConfigs[i] * scale);
                 _joints[i].angularYZDrive = (JointDrive) (YZjointDriveConfigs[i] * scale);
             }
