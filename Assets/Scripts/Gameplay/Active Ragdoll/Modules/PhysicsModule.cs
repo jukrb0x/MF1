@@ -70,6 +70,24 @@ namespace ActiveRagdoll
         private Quaternion _targetRotation;
 
 
+        // jump
+        private bool _jumpState;
+        public bool JumpState
+        {
+            get { return _jumpState; }
+            set { _jumpState = value; }
+        }
+        public float jumpForce = 10;
+        public jk    jumpCase;
+
+        public enum jk
+        {
+            RF,
+            F,
+            RT,
+            T
+        }
+
         private void Start()
         {
             UpdateTargetRotation();
@@ -97,16 +115,18 @@ namespace ActiveRagdoll
         {
             UpdateTargetRotation();
             ApplyCustomDrag();
+            if (_jumpState && _activeRagdoll.Input.IsOnFloor) Jump();
 
 
             Vector2 force;
             switch (_balanceMode)
             {
                 case BALANCE_MODE.UPRIGHT_TORQUE:
-                    var balancePercent = Vector3.Angle(_activeRagdoll.PhysicalTorso.transform.up,
+                    var up = _activeRagdoll.PhysicalTorso.transform.up;
+                    var balancePercent = Vector3.Angle(up,
                         Vector3.up) / 180;
                     balancePercent = uprightTorqueFunction.Evaluate(balancePercent);
-                    var rot = Quaternion.FromToRotation(_activeRagdoll.PhysicalTorso.transform.up,
+                    var rot = Quaternion.FromToRotation(up,
                         Vector3.up).normalized;
 
                     _activeRagdoll.PhysicalTorso.AddTorque(new Vector3(rot.x, rot.y, rot.z) * (uprightTorque * balancePercent));
@@ -125,19 +145,21 @@ namespace ActiveRagdoll
 
                 case BALANCE_MODE.STABILIZER_JOINT: // walking on the floor
                     // Move stabilizer to player torso (useless, but improves clarity)
-                    // fixme: this should be done by AddForce, otherwise doesn't work for the speed.
-                    // todo: where are they updated?
                     _stabilizerRigidbody.MovePosition(_activeRagdoll.PhysicalTorso.position);
-                    _activeRagdoll.PhysicalTorso.MoveRotation(_targetRotation);
-                if(false){
-                    force = _torqueInput * manualTorque;
-                    // _activeRagdoll.PhysicalTorso.AddRelativeTorque(force.y, 0, force.x);
-                    _activeRagdoll.PhysicalTorso.AddRelativeForce(force.x, 0, force.y);
-                    
-                    // todo: this is fun can make a jump roll
-                    //        _activeRagdoll.PhysicalTorso.AddForce(force);
-                }
+                    _stabilizerRigidbody.MoveRotation(_targetRotation);
 
+                    if (false)
+                    {
+                        force = _torqueInput * manualTorque;
+                        // _activeRagdoll.PhysicalTorso.AddRelativeTorque(force.y, 0, force.x);
+                        // _activeRagdoll.PhysicalTorso.AddRelativeForce(force);
+                        _activeRagdoll.PhysicalTorso.AddRelativeForce(force.y, 0, force.x);
+
+                        //
+
+                        // todo: this is fun can make a jump roll
+                        // _activeRagdoll.PhysicalTorso.AddForce(force);
+                    }
                     break;
 
                 case BALANCE_MODE.MANUAL_TORQUE:
@@ -149,6 +171,30 @@ namespace ActiveRagdoll
 
                     break;
             }
+        }
+
+        public void Jump()
+        {
+            var up = new Vector3(0, 1, 0);
+            var f = up * jumpForce;
+            switch (jumpCase)
+            {
+                case jk.RF:
+                    _activeRagdoll.PhysicalTorso.AddRelativeForce(f);
+                    break;
+                case jk.F:
+                    _activeRagdoll.PhysicalTorso.AddForce(f);
+                    break;
+                case jk.T:
+                    _activeRagdoll.PhysicalTorso.AddTorque(f);
+                    break;
+                case jk.RT:
+                    _activeRagdoll.PhysicalTorso.AddRelativeTorque(f);
+                    break;
+
+            }
+            JumpState = false;
+
         }
 
         private void UpdateTargetRotation()
@@ -226,7 +272,6 @@ namespace ActiveRagdoll
                 case BALANCE_MODE.MANUAL_TORQUE:
                     break;
 
-                default: break;
             }
         }
 
