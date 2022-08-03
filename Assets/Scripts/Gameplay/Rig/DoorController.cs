@@ -45,7 +45,7 @@ namespace Gameplay.Rig
         private void Update()
         {
             // door automation will check every automationDelay seconds
-            if (isAutoDoor && _timer >= automationDelay)
+            if (isAutoDoor && _timer > automationDelay)
             {
                 if (autoDoorType == AUTODOOR_TYPE.AUTO_CLOSE)
                 {
