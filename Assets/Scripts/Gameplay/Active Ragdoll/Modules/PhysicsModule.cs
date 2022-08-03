@@ -77,16 +77,8 @@ namespace ActiveRagdoll
             get { return _jumpState; }
             set { _jumpState = value; }
         }
+        [Header("(--- JUMP ---")]
         public float jumpForce = 10;
-        public jk    jumpCase;
-
-        public enum jk
-        {
-            RF,
-            F,
-            RT,
-            T
-        }
 
         private void Start()
         {
@@ -115,7 +107,7 @@ namespace ActiveRagdoll
         {
             UpdateTargetRotation();
             ApplyCustomDrag();
-            if (_jumpState && _activeRagdoll.Input.IsOnFloor) Jump();
+            if (_jumpState && _activeRagdoll.Input.IsOnFloor) Jump(); // wondering if this is the best place to put this, maybe stabilizer joint
 
 
             Vector2 force;
@@ -177,24 +169,24 @@ namespace ActiveRagdoll
         {
             var up = new Vector3(0, 1, 0);
             var f = up * jumpForce;
-            switch (jumpCase)
-            {
-                case jk.RF:
-                    _activeRagdoll.PhysicalTorso.AddRelativeForce(f);
-                    break;
-                case jk.F:
-                    _activeRagdoll.PhysicalTorso.AddForce(f);
-                    break;
-                case jk.T:
-                    _activeRagdoll.PhysicalTorso.AddTorque(f);
-                    break;
-                case jk.RT:
-                    _activeRagdoll.PhysicalTorso.AddRelativeTorque(f);
-                    break;
-
-            }
+            // _activeRagdoll.PhysicalTorso.AddForce(f);
+            AddForce(f);
             JumpState = false;
+        }
 
+        public enum ForceCoordinate
+        {
+            World,
+            Local
+        }
+
+        public void AddForce(Vector3 force, ForceMode mode = ForceMode.Force,
+                             ForceCoordinate coordinate = ForceCoordinate.World)
+        {
+            if (coordinate == ForceCoordinate.World)
+                _activeRagdoll.PhysicalTorso.AddForce(force, mode);
+            if (coordinate == ForceCoordinate.Local)
+                _activeRagdoll.PhysicalTorso.AddRelativeForce(force, mode);
         }
 
         private void UpdateTargetRotation()
