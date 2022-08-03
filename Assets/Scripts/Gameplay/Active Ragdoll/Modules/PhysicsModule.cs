@@ -139,19 +139,7 @@ namespace ActiveRagdoll
                     // Move stabilizer to player torso (useless, but improves clarity)
                     _stabilizerRigidbody.MovePosition(_activeRagdoll.PhysicalTorso.position);
                     _stabilizerRigidbody.MoveRotation(_targetRotation);
-
-                    if (false)
-                    {
-                        force = _torqueInput * manualTorque;
-                        // _activeRagdoll.PhysicalTorso.AddRelativeTorque(force.y, 0, force.x);
-                        // _activeRagdoll.PhysicalTorso.AddRelativeForce(force);
-                        _activeRagdoll.PhysicalTorso.AddRelativeForce(force.y, 0, force.x);
-
-                        //
-
-                        // todo: this is fun can make a jump roll
-                        // _activeRagdoll.PhysicalTorso.AddForce(force);
-                    }
+                    
                     break;
 
                 case BALANCE_MODE.MANUAL_TORQUE:
@@ -167,6 +155,7 @@ namespace ActiveRagdoll
 
         public void Jump()
         {
+            // fixme: current ragdoll in the air only roll forward based on in direction of screen
             var up = new Vector3(0, 1, 0);
             var f = up * jumpForce;
             // _activeRagdoll.PhysicalTorso.AddForce(f);

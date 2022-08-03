@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,6 +6,7 @@ namespace Gameplay.Ragdoll
 {
     public class RagdollInputs : Inputs
     {
+        // ------ Input System Events ------
         public override void OnMove(InputValue value)
         {
             OnMoveDelegates?.Invoke(value.Get<Vector2>());
@@ -22,5 +24,23 @@ namespace Gameplay.Ragdoll
         {
             OnRightClickDelegates?.Invoke(value.Get<float>());
         }
+        
+        
+        // ----------------------------------
+        private void OnApplicationFocus(bool hasFocus)
+        {
+            Cursor.lockState = hasFocus ? CursorLockMode.Locked : CursorLockMode.None;
+        }
+        
+        
+
+        private void Start()
+        {
+        }
+
+        private void Update()
+        {
+        }
+        
     }
 }
