@@ -8,25 +8,32 @@ namespace Gameplay.Chemistry
     {
         public enum ReactantType
         {
-            SimpleElement = 0,
+            SimpleElement    = 0,
             CompositeElement = 1
         }
-        // property name
-        public string UniqueName;
-        // internal name to identify the reactant
 
-        public ReactantType type;
-        private GameObject _reactantObject;
+        // property name
+        public string uniqueName;
+
+        public  ReactantType type;
+        private GameObject   _reactantObject;
 
         private void Start()
         {
             _reactantObject = gameObject;
-            UniqueName = UniqueName.Trim();
+            // use to identify the unique reactant
+            // todo: use hashcode instead of string
+            uniqueName = uniqueName.Trim();
+            if (uniqueName == "")
+            {
+                uniqueName = _reactantObject.name;
+            }
+
         }
-        
+
         public bool CompareReactant(Reactant reactant)
         {
-            return reactant.UniqueName == UniqueName;
+            return reactant.uniqueName == uniqueName;
         }
     }
 }
