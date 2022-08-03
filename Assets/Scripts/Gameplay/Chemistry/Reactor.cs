@@ -62,8 +62,8 @@ namespace Gameplay.Chemistry
         private void TryReact()
         {
             // compare with reaction rules
-            List<string> reactionNamesByRule = reaction.reactants.Select(reactant => reactant.UniqueName).ToList();
-            List<string> reactantNames = reactants.Select(reactant => reactant.UniqueName).ToList();
+            List<string> reactionNamesByRule = reaction.reactants.Select(reactant => reactant.uniqueName).ToList();
+            List<string> reactantNames = reactants.Select(reactant => reactant.uniqueName).ToList();
             // if all reactants are present in the reactor, ignore the order
             // SequenceEqual requires the order of items
             if (Enumerable.SequenceEqual(reactionNamesByRule.OrderBy(e => e), reactantNames.OrderBy(e => e)))
