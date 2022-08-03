@@ -97,14 +97,14 @@ namespace ActiveRagdoll
         /// <summary>
         /// Checks whether the given rigidbody is on floor
         /// </summary>
-        /// <param name="bodyPart">Part of the body to check</param
+        /// <param name="bodyPart">Part of the body to check</param>
         /// <returns> True if the Rigidbody is on floor </returns>
         public bool CheckRigidbodyOnFloor(Rigidbody bodyPart, out Vector3 normal)
         {
             // Raycast
             Ray ray = new Ray(bodyPart.position, Vector3.down);
             bool onFloor = Physics.Raycast(ray, out RaycastHit info, floorDetectionDistance,
-                ~(1 << bodyPart.gameObject.layer));
+                ~(1 << bodyPart.gameObject.layer)); // raycast only ignore self layer
 
             // Additional checks
             onFloor = onFloor && Vector3.Angle(info.normal, Vector3.up) <= maxFloorSlope;
