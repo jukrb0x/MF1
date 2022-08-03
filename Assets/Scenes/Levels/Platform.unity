@@ -2802,7 +2802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorAnimator: {fileID: 1504171799}
-  isAutoDoor: 1
+  isAutoDoor: 0
   autoDoorType: 0
   automationDelay: 0
 --- !u!1 &1505037472
@@ -3122,6 +3122,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 817685262, guid: b21f208237dfa604184a809772254745, type: 3}
+      propertyPath: movementSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014210311, guid: b21f208237dfa604184a809772254745, type: 3}
+      propertyPath: jumpCase
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014210311, guid: b21f208237dfa604184a809772254745, type: 3}
+      propertyPath: jumpForce
+      value: 20000
+      objectReference: {fileID: 0}
     - target: {fileID: 263059405282896446, guid: b21f208237dfa604184a809772254745,
         type: 3}
       propertyPath: m_Layer

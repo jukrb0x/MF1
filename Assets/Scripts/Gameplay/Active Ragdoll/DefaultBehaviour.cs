@@ -76,11 +76,7 @@ public class DefaultBehaviour : MonoBehaviour
         // animator controls the movement
         // forward is set to the physical and update in FixedUpdate
         _animationModule.Animator.SetBool("moving", true);
-        _animationModule.Animator.SetFloat("speed", _movement.magnitude * movementSpeed); // this only change the anim
-        
-        // todo:
-        // _animationModule.Animator.speed = movementSpeed;
-        // todo: jump here
+        _animationModule.Animator.SetFloat("speed", _movement.magnitude * movementSpeed); 
 
 
 
