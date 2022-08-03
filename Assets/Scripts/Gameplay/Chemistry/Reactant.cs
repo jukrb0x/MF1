@@ -13,8 +13,7 @@ namespace Gameplay.Chemistry
         }
 
         // property name
-        public string uniqueName;
-
+        public  string       uniqueName;
         public  ReactantType type;
         private GameObject   _reactantObject;
 
