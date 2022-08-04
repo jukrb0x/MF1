@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Gameplay.Ragdoll
 {
     // Base class for ragdoll system
-    public class RagCoreBase : MonoBehaviour
+    public class RagdollCore : MonoBehaviour
     {
 
         public Ragdoll ragdoll;

@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
+using Gameplay.Ragdoll.Utilities;
 using UnityEngine;
 
 namespace Gameplay.Ragdoll.Core
 {
     // The boyd and connections of the ragdoll
-    public class Body : RagCoreBase
+    // the ragdoll has two bodies: animated one and physical one
+    // they bodies need to be synchronized in the runtime
+    public class Body : RagdollCore
     {
         [Header("Body Torso")]
         public Transform animatedTorso;
@@ -17,15 +20,55 @@ namespace Gameplay.Ragdoll.Core
 
         public List<BodyPart> bodyParts;
 
+        [Header("Physics")]
+        public float maxAngularVelocity;
+        public Transform[]         animatedBones;
+        public ConfigurableJoint[] physicalJoints;
+        public Rigidbody[]         physicalBodies;
+
+        // Synchronization
+        public AnimatorHelper animatorHelper;
+
 
         private void Awake()
         {
-            // todo: some checks and defaults
+            animatedBones ??= animatedTorso.GetComponentsInChildren<Transform>();
+            physicalJoints ??= GetComponentsInChildren<ConfigurableJoint>();
+            physicalBodies ??= GetComponentsInChildren<Rigidbody>();
+
+            foreach (var rb in physicalBodies)
+            {
+                rb.maxAngularVelocity = maxAngularVelocity;
+            }
+
+            // Init each body part
+            foreach (var part in bodyParts)
+            {
+                part.Init();
+            }
+            // add animator helper in runtime
+            animatorHelper = animatedAnimator.gameObject.AddComponent<AnimatorHelper>();
+
         }
 
         private void OnValidate()
         {
-            // todo get the default body parts
+            // for auto fetch
+            // animated must be above physical in the hierarchy
+            Animator[] animators = GetComponentsInChildren<Animator>();
+            if (animators.Length >= 2)
+            {
+                if (animatedAnimator == null) animatedAnimator = animators[0];
+                if (physicalAnimator == null) physicalAnimator = animators[1];
+
+                if (animatedTorso == null)
+                    animatedTorso = animatedAnimator.GetBoneTransform(HumanBodyBones.Hips);
+                if (physicalTorso == null)
+                    physicalTorso = physicalAnimator.GetBoneTransform(HumanBodyBones.Hips).GetComponent<Rigidbody>();
+            }
+
+            if (bodyParts.Count == 0)
+                GenerateDefaultBodyParts();
         }
 
 
@@ -36,6 +79,16 @@ namespace Gameplay.Ragdoll.Core
                     return part;
 
             return null;
+        }
+
+        public Transform GetAnimatedBone(HumanBodyBones bone)
+        {
+            return animatedAnimator.GetBoneTransform(bone);
+        }
+
+        public Transform GetPhysicalBone(HumanBodyBones bone)
+        {
+            return physicalAnimator.GetBoneTransform(bone);
         }
 
         public void GenerateDefaultBodyParts()
@@ -65,6 +118,12 @@ namespace Gameplay.Ragdoll.Core
             }
 
             return jointList;
+        }
+
+        public void SetStrengthScaleForAllBodyParts(float scale)
+        {
+            foreach (BodyPart bodyPart in bodyParts)
+                bodyPart.SetStrengthScale(scale);
         }
 
     }
