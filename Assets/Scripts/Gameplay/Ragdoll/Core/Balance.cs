@@ -1,7 +1,7 @@
-namespace Gameplay.Ragdoll
+namespace Gameplay.Ragdoll.Core
 {
-    public class Balance
+    public class Balance : RagCoreBase
     {
-        
+
     }
 }

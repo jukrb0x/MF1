@@ -1,11 +1,9 @@
-using System;
 using UnityEngine;
 
-namespace Gameplay.Ragdoll
+namespace Gameplay.Ragdoll.Core
 {
-    public class Ground : MonoBehaviour
+    public class Ground : RagCoreBase
     {
-        private Ragdoll   _ragdoll;
         private Rigidbody _footLeft, _footRight;
 
         // todo: this should be encapsulated in ragdoll class
@@ -26,7 +24,7 @@ namespace Gameplay.Ragdoll
 
             IsOnGround = CheckRigidbodyOnFloor(_footLeft) || CheckRigidbodyOnFloor(_footRight);
             
-            if(isOnGroundLast != IsOnGround) _ragdoll.inputBase.OnFloorDelegates(IsOnGround); // fixme
+            if(isOnGroundLast != IsOnGround) ragdoll.inputs.OnFloorDelegates(IsOnGround); // fixme
 
 
         }
