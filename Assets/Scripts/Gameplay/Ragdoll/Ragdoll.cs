@@ -6,9 +6,9 @@ namespace Gameplay.Ragdoll
 {
     // The Ragdoll System Entry
     // Configure body parts and their connections
-    [RequireComponent(typeof(Movement))]
+    [RequireComponent(typeof(RagdollMovement))]
     [RequireComponent(typeof(RagdollPhysics))]
-    [RequireComponent(typeof(Body))]
+    [RequireComponent(typeof(RagdollBody))]
     [RequireComponent(typeof(RagdollAnimation))]
     [RequireComponent(typeof(RagdollInputs))]
     public class Ragdoll : MonoBehaviour
@@ -18,9 +18,9 @@ namespace Gameplay.Ragdoll
         [Header("Ragdoll System")]
         public RagdollInputs    inputs;
         public RagdollAnimation ragdollAnimation;
-        public Body             ragdollBody;
+        public RagdollBody             ragdollBody;
         public RagdollPhysics   ragdollPhysics;
-        public Movement         ragdollMovement;
+        public RagdollMovement         ragdollMovement;
 
         // Ragdoll Internals
         

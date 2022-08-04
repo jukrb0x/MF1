@@ -78,10 +78,12 @@ namespace Gameplay.Ragdoll.Core
             
             // physics system starts
             UpdateTargetRotation();
-            InitStabilizerJoint();
+            InitStabilizer();
             StartBalance();
         }
-        private void InitStabilizerJoint()
+        
+        // stabilizer is used to stable the ragdoll in upright position
+        private void InitStabilizer()
         {
             _stabilizer = new GameObject("Stabilizer", typeof(Rigidbody), typeof(ConfigurableJoint));
             _stabilizer.transform.parent = ragdoll.ragdollBody.physicalTorso.transform.parent;
@@ -126,8 +128,8 @@ namespace Gameplay.Ragdoll.Core
 
                     break;
 
-                case BalanceMode.StabilizerJoint: // walking on the floor
-                    // Move stabilizer to player torso (useless, but improves clarity)
+                case BalanceMode.StabilizerJoint:
+                    // useless for game
                     _stabilizerRigidbody.MovePosition(ragdoll.ragdollBody.physicalTorso.position);
                     _stabilizerRigidbody.MoveRotation(_targetRotation);
 
@@ -144,7 +146,8 @@ namespace Gameplay.Ragdoll.Core
             }
 
         }
-        // player inputs
+        
+        // Player input actions
         public void ManualTorqueInput(Vector2 torqueInput)
         {
             _torqueInput = torqueInput;
@@ -175,6 +178,7 @@ namespace Gameplay.Ragdoll.Core
                 ragdoll.ragdollBody.physicalTorso.AddRelativeForce(force, mode);
         }
 
+        // Utilities
         private void UpdateTargetRotation()
         {
             if (TargetDirection != Vector3.zero)
