@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Gameplay.Ragdoll
 {
-    public class FloorCheck : MonoBehaviour
+    public class Ground : MonoBehaviour
     {
         private Ragdoll   _ragdoll;
         private Rigidbody _footLeft, _footRight;
@@ -12,7 +12,7 @@ namespace Gameplay.Ragdoll
         public float maxSlopeAngle = 60;
         public float raycastMaxDistance = 0.2f;
 
-        public bool IsOnFloor { get; private set; }
+        public bool IsOnGround { get; private set; }
 
         private void Start()
         {
@@ -22,11 +22,11 @@ namespace Gameplay.Ragdoll
 
         private void Update()
         {
-            bool isOnFloorLast = IsOnFloor;
+            bool isOnGroundLast = IsOnGround;
 
-            IsOnFloor = CheckRigidbodyOnFloor(_footLeft) || CheckRigidbodyOnFloor(_footRight);
+            IsOnGround = CheckRigidbodyOnFloor(_footLeft) || CheckRigidbodyOnFloor(_footRight);
             
-            if(isOnFloorLast != IsOnFloor) _ragdoll.inputs.OnFloorDelegates(IsOnFloor); // fixme
+            if(isOnGroundLast != IsOnGround) _ragdoll.inputBase.OnFloorDelegates(IsOnGround); // fixme
 
 
         }

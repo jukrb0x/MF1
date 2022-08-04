@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace Gameplay.Ragdoll
 {
-    public abstract class Inputs : MonoBehaviour
+    public abstract class InputBase : MonoBehaviour
     {
         private void OnApplicationFocus(bool hasFocus)
         {
