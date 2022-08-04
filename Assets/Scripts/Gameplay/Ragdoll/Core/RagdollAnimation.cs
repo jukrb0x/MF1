@@ -16,7 +16,7 @@ namespace Gameplay.Ragdoll.Core
         private Transform[]         _animatedBones;
         private AnimatorHelper      _animatorHelper;
 
-        public Animator animator;
+        [NonSerialized] public Animator Animator;
 
         // Define the rotation range in which the target direction influences arm movement.
         public float minTargetDirAngle = -30, maxTargetDirAngle = 60;
@@ -52,10 +52,16 @@ namespace Gameplay.Ragdoll.Core
 
         private void Start()
         {
+
+            // input event delegates
+            ragdoll.inputs.OnLeftClickDelegates += UseLeftArm;
+            ragdoll.inputs.OnRightClickDelegates += UseRightArm;
+
+            // binding
             _joints = ragdoll.ragdollBody.physicalJoints;
             _animatedBones = ragdoll.ragdollBody.animatedBones;
             _animatorHelper = ragdoll.ragdollBody.animatorHelper;
-            animator = ragdoll.ragdollBody.animatedAnimator;
+            Animator = ragdoll.ragdollBody.animatedAnimator;
 
             _initialJointsRotation = new Quaternion[_joints.Length];
             for (int i = 0; i < _joints.Length; i++)
@@ -73,7 +79,7 @@ namespace Gameplay.Ragdoll.Core
         {
             for (int i = 0; i < _joints.Length; i++)
             {
-                _joints[i].SetTargetRotationLocal(_animatedBones[i + 1].localRotation, _initialJointsRotation[i]);
+                ConfigurableJointExtensions.SetTargetRotationLocal(_joints[i], _animatedBones[i + 1].localRotation, _initialJointsRotation[i]);
             }
         }
 
@@ -155,8 +161,8 @@ namespace Gameplay.Ragdoll.Core
         /// Animator Player, the speed only affects the speed of the animation, not the actual movement speed.
         public void PlayAnimation(string animation, float speed = 1)
         {
-            animator.Play(animation);
-            animator.SetFloat("speed", speed);
+            Animator.Play(animation);
+            Animator.SetFloat("speed", speed);
         }
 
         // todo: use xxx arm only works when IK is enable

@@ -58,7 +58,7 @@ namespace Gameplay.Ragdoll.Core
 
         // ----- jumping -----
         [Header("Jump")]
-        public float jumpForce;
+        public float jumpForce = 20000;
         private bool _jumping;
         public bool JumpState
         {
@@ -75,13 +75,13 @@ namespace Gameplay.Ragdoll.Core
         {
             // input delegates
             ragdoll.inputs.OnMoveDelegates += ManualTorqueInput;
-            
+
             // physics system starts
             UpdateTargetRotation();
             InitStabilizer();
             StartBalance();
         }
-        
+
         // stabilizer is used to stable the ragdoll in upright position
         private void InitStabilizer()
         {
@@ -146,7 +146,7 @@ namespace Gameplay.Ragdoll.Core
             }
 
         }
-        
+
         // Player input actions
         public void ManualTorqueInput(Vector2 torqueInput)
         {
