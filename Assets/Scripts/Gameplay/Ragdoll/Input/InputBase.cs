@@ -15,14 +15,14 @@ namespace Gameplay.Ragdoll.Input
         public delegate void OnJumpDelegate();
         public delegate void OnLeftClickDelegate(float armWeight);
         public delegate void OnRightClickDelegate(float armWeight);
-        public delegate void OnFloorDelegate(bool onFloor); // use to update the on-floor state
+        public delegate void OnGroundDelegate(bool onFloor); // use to update the on-floor state
         
         // ------ Delegates ------
         public OnMoveDelegate       OnMoveDelegates;
         public OnJumpDelegate       OnJumpDelegates;
         public OnLeftClickDelegate  OnLeftClickDelegates;
         public OnRightClickDelegate OnRightClickDelegates;
-        public OnFloorDelegate      OnFloorDelegates;
+        public OnGroundDelegate      OnGroundDelegates;
         
         // ------ Input System Events ------
         public abstract void OnMove(InputValue value);
