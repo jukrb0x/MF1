@@ -8,7 +8,7 @@ namespace Gameplay.Ragdoll.Core
     // The boyd and connections of the ragdoll
     // the ragdoll has two bodies: animated one and physical one
     // they bodies need to be synchronized in the runtime
-    public class Body : RagdollCore
+    public class RagdollBody : RagdollCore
     {
         [Header("Body Torso")]
         public Transform animatedTorso;

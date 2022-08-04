@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Gameplay.Ragdoll.Core
 {
     // handle the movement inputs and apply to physics component
-    public class Movement : RagdollCore
+    public class RagdollMovement : RagdollCore
     {
         public  bool    enable;
         private Vector2 _movement;
