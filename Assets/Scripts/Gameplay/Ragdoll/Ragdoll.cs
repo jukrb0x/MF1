@@ -1,3 +1,4 @@
+using System;
 using Gameplay.Ragdoll.Core;
 using Gameplay.Ragdoll.Input;
 using UnityEngine;
@@ -6,6 +7,7 @@ namespace Gameplay.Ragdoll
 {
     // The Ragdoll System Entry
     // Configure body parts and their connections
+    [RequireComponent(typeof(RagdollCamera))]
     [RequireComponent(typeof(RagdollMovement))]
     [RequireComponent(typeof(RagdollPhysics))]
     [RequireComponent(typeof(RagdollBody))]
@@ -25,9 +27,14 @@ namespace Gameplay.Ragdoll
 
         // Ragdoll Internals
 
-        private void Awake()
+        private void OnValidate()
         {
-            // _floorCheck = GetComponent<FloorCheck>();
+            if (inputs == null) inputs = GetComponent<RagdollInputs>();
+            if (ragdollAnimation == null) ragdollAnimation = GetComponent<RagdollAnimation>();
+            if (ragdollBody == null) ragdollBody = GetComponent<RagdollBody>();
+            if (ragdollPhysics == null) ragdollPhysics = GetComponent<RagdollPhysics>();
+            if (ragdollMovement == null) ragdollMovement = GetComponent<RagdollMovement>();
+            if (ragdollCamera == null) ragdollCamera = GetComponent<RagdollCamera>();
         }
 
 

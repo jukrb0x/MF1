@@ -7,7 +7,7 @@ namespace Gameplay.Ragdoll.Core
     // handle the movement inputs and apply to physics component
     public class RagdollMovement : RagdollCore
     {
-        public  bool    enable;
+        public  bool    enable = true;
         private Vector2 _movement;
         private Vector3 _aimAt;
 
@@ -16,7 +16,7 @@ namespace Gameplay.Ragdoll.Core
         // Ground check
         public bool IsOnGround { get; set; }
         public  float     maxSlopeAngle      = 60;
-        public  float     raycastMaxDistance = 0.2f;
+        private float     raycastMaxDistance = 0.2f;
         private Rigidbody _footLeft, _footRight;
 
         private void Start()
@@ -25,7 +25,7 @@ namespace Gameplay.Ragdoll.Core
             _footLeft = ragdoll.ragdollBody.GetPhysicalBone(HumanBodyBones.RightFoot).GetComponent<Rigidbody>();
             _footRight = ragdoll.ragdollBody.GetPhysicalBone(HumanBodyBones.LeftFoot).GetComponent<Rigidbody>();
 
-            // input delegates
+            // input events delegates
             ragdoll.inputs.OnMoveDelegates += MovementInput;
             ragdoll.inputs.OnJumpDelegates += JumpInput;
             ragdoll.inputs.OnGroundDelegates += UpdateRagdollOnGround;
@@ -37,22 +37,24 @@ namespace Gameplay.Ragdoll.Core
             // todo:
             // aim at get from camera forward!!!
             // and sync to animation
+            _aimAt = ragdoll.ragdollCamera.cameraObject.transform.forward;
+            ragdoll.ragdollAnimation.AimDirection = _aimAt;
             UpdateMovement();
             UpdateFootOnGround();
         }
-        
+
         private void UpdateMovement()
         {
             if (_movement == Vector2.zero || !enable)
             {
-                ragdoll.ragdollAnimation.animator.SetBool("moving", false);
+                ragdoll.ragdollAnimation.Animator.SetBool("moving", false);
                 return;
             }
 
             // animator controls the movement
             // forward is set to the physical and update in FixedUpdate
-            ragdoll.ragdollAnimation.animator.SetBool("moving", true);
-            ragdoll.ragdollAnimation.animator.SetFloat("speed", _movement.magnitude * speed);
+            ragdoll.ragdollAnimation.Animator.SetBool("moving", true);
+            ragdoll.ragdollAnimation.Animator.SetFloat("speed", _movement.magnitude * speed);
 
             float angleOffset = Vector2.SignedAngle(_movement, Vector2.up);
             Vector3 targetForward =
@@ -71,16 +73,7 @@ namespace Gameplay.Ragdoll.Core
             ragdoll.ragdollPhysics.JumpState = true;
         }
 
-
         // Ground check
-        private void UpdateFootOnGround()
-        {
-            bool isOnGroundLast = IsOnGround;
-            IsOnGround = CheckRigidbodyOnGround(_footLeft) || CheckRigidbodyOnGround(_footRight);
-            if (isOnGroundLast != IsOnGround) ragdoll.inputs.OnGroundDelegates(IsOnGround);
-        }
-
-
         public bool CheckRigidbodyOnGround(Rigidbody rb)
         {
             Ray ray = new Ray(rb.position, Vector3.down);
@@ -93,6 +86,13 @@ namespace Gameplay.Ragdoll.Core
             return onGround;
         }
 
+        private void UpdateFootOnGround()
+        {
+            bool isOnGroundLast = IsOnGround;
+            IsOnGround = CheckRigidbodyOnGround(_footLeft) || CheckRigidbodyOnGround(_footRight);
+            if (isOnGroundLast != IsOnGround) ragdoll.inputs.OnGroundDelegates(IsOnGround);
+        }
+
         // put this into onGround delegates
         private void UpdateRagdollOnGround(bool onGround)
         {
@@ -103,7 +103,7 @@ namespace Gameplay.Ragdoll.Core
                 ragdoll.ragdollBody.GetBodyPart("Head Neck")?.SetStrengthScale(1);
                 ragdoll.ragdollBody.GetBodyPart("Right Leg")?.SetStrengthScale(1);
                 ragdoll.ragdollBody.GetBodyPart("Left Leg")?.SetStrengthScale(1);
-                ragdoll.ragdollAnimation.PlayAnimation("Idle"); 
+                ragdoll.ragdollAnimation.PlayAnimation("Idle");
             }
             else // in the air
             {
