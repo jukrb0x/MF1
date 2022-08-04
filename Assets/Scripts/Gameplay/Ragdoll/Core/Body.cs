@@ -71,6 +71,19 @@ namespace Gameplay.Ragdoll.Core
                 GenerateDefaultBodyParts();
         }
 
+        private void FixedUpdate()
+        {
+            SyncAnimatedWithPhysical();
+        }
+
+        private void SyncAnimatedWithPhysical()
+        {
+            var tf = animatedAnimator.transform;
+            // position
+            tf.position = physicalTorso.position + (tf.position - animatedTorso.position);
+            // rotation
+            tf.rotation = physicalTorso.rotation;
+        }
 
         public BodyPart GetBodyPart(string name)
         {
