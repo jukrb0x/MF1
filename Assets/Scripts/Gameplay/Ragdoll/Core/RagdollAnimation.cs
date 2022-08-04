@@ -73,6 +73,7 @@ namespace Gameplay.Ragdoll.Core
         private void FixedUpdate()
         {
             UpdatePhysicalJoints();
+            UpdateIK();
         }
 
         private void UpdatePhysicalJoints()
