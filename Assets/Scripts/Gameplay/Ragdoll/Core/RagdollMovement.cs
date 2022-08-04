@@ -34,9 +34,6 @@ namespace Gameplay.Ragdoll.Core
 
         private void Update()
         {
-            // todo:
-            // aim at get from camera forward!!!
-            // and sync to animation
             _aimAt = ragdoll.ragdollCamera.cameraObject.transform.forward;
             ragdoll.ragdollAnimation.AimDirection = _aimAt;
             UpdateMovement();

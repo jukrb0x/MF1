@@ -22,9 +22,9 @@ namespace Gameplay.Ragdoll.Core
 
         [Header("Physics")]
         public float maxAngularVelocity;
-        public Transform[]         animatedBones;
-        public ConfigurableJoint[] physicalJoints;
-        public Rigidbody[]         physicalBodies;
+        [NonSerialized] public Transform[]         animatedBones;
+        [NonSerialized] public ConfigurableJoint[] physicalJoints;
+        [NonSerialized] public Rigidbody[]         physicalBodies;
 
         // Synchronization
         public AnimatorHelper animatorHelper;
@@ -33,8 +33,8 @@ namespace Gameplay.Ragdoll.Core
         private void Awake()
         {
             animatedBones ??= animatedTorso.GetComponentsInChildren<Transform>();
-            physicalJoints ??= GetComponentsInChildren<ConfigurableJoint>();
-            physicalBodies ??= GetComponentsInChildren<Rigidbody>();
+            physicalJoints ??= physicalTorso.GetComponentsInChildren<ConfigurableJoint>();
+            physicalBodies ??= physicalTorso.GetComponentsInChildren<Rigidbody>();
 
             foreach (var rb in physicalBodies)
             {
@@ -233,7 +233,7 @@ namespace Gameplay.Ragdoll.Core
             };
         }
     }
-    
+
     [Serializable]
     public struct JointMotionsConfig // todo: will need when grab things
     {
