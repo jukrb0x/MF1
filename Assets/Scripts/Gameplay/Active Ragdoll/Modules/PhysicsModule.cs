@@ -77,7 +77,7 @@ namespace ActiveRagdoll
             get { return _jumpState; }
             set { _jumpState = value; }
         }
-        [Header("(--- JUMP ---")]
+        [Header("--- JUMP ---")]
         public float jumpForce = 10;
 
         private void Start()
@@ -261,12 +261,5 @@ namespace ActiveRagdoll
             _torqueInput = torqueInput;
         }
 
-
-        public void JustTest()
-        {
-
-            Rigidbody rb = new Rigidbody();
-
-        }
     }
 } // namespace ActiveRagdoll

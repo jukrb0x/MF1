@@ -60,6 +60,7 @@ namespace ActiveRagdoll
         }
     }
 
+    // use to configure joint drive
     [Serializable]
     public class BodyPart
     {
