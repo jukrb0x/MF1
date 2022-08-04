@@ -6,6 +6,7 @@ namespace Gameplay.Ragdoll
 {
     // The Ragdoll System Entry
     // Configure body parts and their connections
+    [RequireComponent(typeof(Movement))]
     [RequireComponent(typeof(RagdollPhysics))]
     [RequireComponent(typeof(Body))]
     [RequireComponent(typeof(RagdollAnimation))]
@@ -27,7 +28,8 @@ namespace Gameplay.Ragdoll
         {
             // _floorCheck = GetComponent<FloorCheck>();
         }
-
+        
+        
 
     }
 }
