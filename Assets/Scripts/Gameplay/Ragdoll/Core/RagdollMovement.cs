@@ -103,7 +103,7 @@ namespace Gameplay.Ragdoll.Core
                 ragdoll.ragdollBody.GetBodyPart("Head Neck")?.SetStrengthScale(1);
                 ragdoll.ragdollBody.GetBodyPart("Right Leg")?.SetStrengthScale(1);
                 ragdoll.ragdollBody.GetBodyPart("Left Leg")?.SetStrengthScale(1);
-                // _animationModule.PlayAnimation("Idle"); todo
+                ragdoll.ragdollAnimation.PlayAnimation("Idle"); 
             }
             else // in the air
             {
@@ -112,7 +112,7 @@ namespace Gameplay.Ragdoll.Core
                 ragdoll.ragdollBody.GetBodyPart("Head Neck")?.SetStrengthScale(0.1f);
                 ragdoll.ragdollBody.GetBodyPart("Right Leg")?.SetStrengthScale(0.05f);
                 ragdoll.ragdollBody.GetBodyPart("Left Leg")?.SetStrengthScale(0.05f);
-                // _animationModule.PlayAnimation("InTheAir");
+                ragdoll.ragdollAnimation.PlayAnimation("InTheAir");
             }
         }
     }
