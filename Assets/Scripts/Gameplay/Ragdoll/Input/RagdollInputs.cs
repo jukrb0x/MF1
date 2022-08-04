@@ -1,10 +1,9 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Gameplay.Ragdoll
+namespace Gameplay.Ragdoll.Input
 {
-    public class RagInput : InputBase
+    public class RagdollInputs : InputBase
     {
         // ------ Input System Events ------
         public override void OnMove(InputValue value)

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Gameplay.Ragdoll
+namespace Gameplay.Ragdoll.Input
 {
     public abstract class InputBase : MonoBehaviour
     {
