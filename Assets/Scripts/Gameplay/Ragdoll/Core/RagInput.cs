@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace Gameplay.Ragdoll
 {
-    public class RagdollInputs : Inputs
+    public class RagInput : InputBase
     {
         // ------ Input System Events ------
         public override void OnMove(InputValue value)
