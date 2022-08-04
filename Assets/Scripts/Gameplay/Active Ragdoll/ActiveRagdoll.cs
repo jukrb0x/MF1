@@ -57,7 +57,7 @@ namespace ActiveRagdoll
         }
 
 
-        public Transform[] AnimatedBones { get; private set; }
+        public Transform[] AnimatedBones { get; private set; } 
         public ConfigurableJoint[] Joints { get; private set; }
         public Rigidbody[] Rigidbodies { get; private set; }
 
@@ -94,7 +94,7 @@ namespace ActiveRagdoll
             if (animators.Length >= 2)
             {
                 // animated is above physical in the hierarchy
-                // otherwise the order will be messed up
+                // otherwise the order will be messed up (for auto)
                 if (_animatedAnimator == null) _animatedAnimator = animators[0];
                 if (_physicalAnimator == null) _physicalAnimator = animators[1];
 
