@@ -16,20 +16,21 @@ namespace Gameplay.Ragdoll
 
         // Ragdoll Components
         [Header("Ragdoll System")]
-        public RagdollInputs    inputs;
+        public RagdollInputs inputs;
         public RagdollAnimation ragdollAnimation;
-        public RagdollBody             ragdollBody;
+        public RagdollBody      ragdollBody;
         public RagdollPhysics   ragdollPhysics;
-        public RagdollMovement         ragdollMovement;
+        public RagdollMovement  ragdollMovement;
+        public RagdollCamera    ragdollCamera;
 
         // Ragdoll Internals
-        
+
         private void Awake()
         {
             // _floorCheck = GetComponent<FloorCheck>();
         }
-        
-        
+
+
 
     }
 }
