@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Gameplay.Fracture.Runtime.Scripts.Options
 {
-    public enum TriggerType 
+    public enum TriggerType
     {
         Collision,
-        Ray,
+        RaycastHit,
         Trigger,
         Keyboard
     }
@@ -30,13 +31,19 @@ namespace Gameplay.Fracture.Runtime.Scripts.Options
         [Tooltip("If the trigger type is Keyboard, this is the key code that will trigger a fracture when pressed.")]
         public KeyCode triggerKey;
 
+        // raycast hit
+        public float  maximumHealth;
+        public float  rayForce = 15f; // todo: currently no usage
+        public bool burstOnHit = true;
+
         public TriggerOptions()
         {
-            this.triggerType = TriggerType.Collision;
-            this.minimumCollisionForce = 0f;
-            this.filterCollisionsByTag = false;
-            this.triggerAllowedTags = new List<string>();
-            this.triggerKey = KeyCode.None;
+            triggerType = TriggerType.Collision;
+            minimumCollisionForce = 0f;
+            filterCollisionsByTag = false;
+            triggerAllowedTags = new List<string>();
+            triggerKey = KeyCode.None;
+            maximumHealth = 5f;
         }
 
         /// <summary>
