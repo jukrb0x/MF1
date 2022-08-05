@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 860747899}
   - component: {fileID: 860747892}
   - component: {fileID: 860747897}
+  - component: {fileID: 4557964835017376221}
   m_Layer: 8
   m_Name: MyStickman
   m_TagString: Untagged
@@ -60,6 +61,7 @@ MonoBehaviour:
   ragdollPhysics: {fileID: 860747895}
   ragdollMovement: {fileID: 860747896}
   ragdollCamera: {fileID: 860747899}
+  ragdollGrab: {fileID: 4557964835017376221}
 --- !u!114 &860747893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,6 +351,10 @@ MonoBehaviour:
   cameraObject: {fileID: 0}
   smoothSpeed: 5
   smooth: 1
+  dontBlockCamera:
+    serializedVersion: 2
+    m_Bits: 768
+  cameraRepositionOffset: 0.15
   improveSteepInclinations: 1
   inclinationAngle: 30
   inclinationDistance: 1.5
@@ -357,10 +363,6 @@ MonoBehaviour:
   initialDistance: 2
   minVerticalAngle: -23
   maxVerticalAngle: 60
-  dontBlockCamera:
-    serializedVersion: 2
-    m_Bits: 768
-  cameraRepositionOffset: 0.15
 --- !u!114 &860747892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,6 +406,28 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &4557964835017376221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4551733872406489797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3edbf242a2844ae7be4af74f23234afb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ragdoll: {fileID: 860747891}
+  leftHandBearWeight: 30
+  rightHandBearWeight: 30
+  jointMotionsConfig:
+    angularXMotion: 2
+    angularYMotion: 2
+    angularZMotion: 2
+    angularXLimit: 30
+    angularYLimit: 30
+    angularZLimit: 30
 --- !u!1001 &4551733871454457453
 PrefabInstance:
   m_ObjectHideFlags: 0

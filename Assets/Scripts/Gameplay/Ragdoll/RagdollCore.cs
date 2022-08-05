@@ -24,5 +24,16 @@ namespace Gameplay.Ragdoll
             }
         }
 
+        protected virtual void Start()
+        {
+            // call to bind the inputs
+            OnInputDelegate();
+        }
+
+        /// <summary>
+        ///  the input system events delegates binding
+        /// </summary>
+        protected virtual void OnInputDelegate() { }
+
     }
 }
