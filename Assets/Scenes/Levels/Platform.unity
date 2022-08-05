@@ -1430,20 +1430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcb81d28944043aaab3befb91e9428ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fractureOptions:
-    fragmentCount: 10
-    xAxis: 1
-    yAxis: 1
-    zAxis: 1
-    detectFloatingFragments: 0
-    asynchronous: 0
-    insideMaterial: {fileID: 0}
-    textureScale: {x: 1, y: 1}
-    textureOffset: {x: 0, y: 0}
-  callbackOptions:
-    onCompleted:
-      m_PersistentCalls:
-        m_Calls: []
 --- !u!1 &937309977
 GameObject:
   m_ObjectHideFlags: 0
@@ -4666,6 +4652,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2823304615256995810, guid: 82f1f40f15c734a4a9292ec51ce8ad21,
         type: 3}
+      propertyPath: onTriggerOff.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823304615256995810, guid: 82f1f40f15c734a4a9292ec51ce8ad21,
+        type: 3}
       propertyPath: onTriggerOn.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Gameplay.Rig.DoorController, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -4676,12 +4667,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2823304615256995810, guid: 82f1f40f15c734a4a9292ec51ce8ad21,
         type: 3}
+      propertyPath: onTriggerOff.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Gameplay.Rig.DoorController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823304615256995810, guid: 82f1f40f15c734a4a9292ec51ce8ad21,
+        type: 3}
       propertyPath: onTriggerOn.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2823304615256995810, guid: 82f1f40f15c734a4a9292ec51ce8ad21,
         type: 3}
       propertyPath: onTriggerOn.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823304615256995810, guid: 82f1f40f15c734a4a9292ec51ce8ad21,
+        type: 3}
+      propertyPath: onTriggerOff.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5476909276159794244, guid: 82f1f40f15c734a4a9292ec51ce8ad21,
