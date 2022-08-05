@@ -74,7 +74,7 @@ namespace Gameplay.Ragdoll.Core
         private void OnValidate()
         {
             // not always working
-            if (lookAt == null) lookAt = ragdoll.ragdollBody.GetPhysicalBone(HumanBodyBones.Head);
+            if (lookAt == null) lookAt = ragdoll.ragdollBody.GetPhysicalBone(HumanBodyBones.Head).gameObject.transform;
         }
 
         private void UpdateCamera()
