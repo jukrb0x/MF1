@@ -1,3 +1,4 @@
+using Gameplay.Fracture.Runtime.Scripts;
 using UnityEditor;
 
 [CustomEditor(typeof(Slice))]
