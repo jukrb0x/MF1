@@ -7,6 +7,7 @@ namespace Gameplay.Fracture.Runtime.Scripts.Options
     public enum TriggerType 
     {
         Collision,
+        Ray,
         Trigger,
         Keyboard
     }

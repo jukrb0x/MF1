@@ -11,7 +11,9 @@ namespace Gameplay.Ragdoll.Core
         private Vector2 _movement;
         private Vector3 _aimAt;
 
-        [Range(1, 5)] public float speed = 1;
+        private              float _lastSpeed;
+        [Range(1, 5)] public float speed = 2;
+        [Range(1, 5)] public float sprintSpeed = 3.5f;
 
         // Ground check
         public bool IsOnGround { get; set; }
@@ -34,6 +36,7 @@ namespace Gameplay.Ragdoll.Core
             ragdoll.inputs.OnMoveDelegates += MovementInput;
             ragdoll.inputs.OnJumpDelegates += JumpInput;
             ragdoll.inputs.OnGroundDelegates += UpdateRagdollOnGround;
+            ragdoll.inputs.OnSprintDelegates += SprintInput;
         }
 
         private void Update()
@@ -72,6 +75,21 @@ namespace Gameplay.Ragdoll.Core
         private void JumpInput()
         {
             ragdoll.ragdollPhysics.JumpState = true;
+        }
+
+        // should press and hold the left-shift to sprint
+        private void SprintInput(float sprint)
+        {
+            Debug.Log(sprint);
+            if (sprint > .1f)
+            {
+                _lastSpeed = speed;
+                speed = sprintSpeed;
+            }
+            else
+            {
+                speed = _lastSpeed;
+            }
         }
 
         // Ground check
