@@ -71,15 +71,19 @@ namespace Gameplay.Ragdoll.Core
                 _jumping = value;
             }
         }
-        private void Start()
+        protected override void Start()
         {
-            // input delegates
-            ragdoll.inputs.OnMoveDelegates += ManualTorqueInput;
-
+            base.Start();
             // physics system starts
             UpdateTargetRotation();
             InitStabilizer();
             StartBalance();
+        }
+
+        protected override void OnInputDelegate()
+        {
+            base.OnInputDelegate();
+            ragdoll.inputs.OnMoveDelegates += ManualTorqueInput;
         }
 
         // stabilizer is used to stable the ragdoll in upright position

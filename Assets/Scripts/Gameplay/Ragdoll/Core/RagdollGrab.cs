@@ -13,8 +13,10 @@ namespace Gameplay.Ragdoll.Core
 
         private Hand _leftHand, _rightHand;
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
+            
             var leftHand = ragdoll.ragdollBody.GetPhysicalBone(HumanBodyBones.LeftHand).gameObject;
             var rightHand = ragdoll.ragdollBody.GetPhysicalBone(HumanBodyBones.RightHand).gameObject;
 
@@ -26,20 +28,22 @@ namespace Gameplay.Ragdoll.Core
             _leftHand.Init(ragdoll, jointMotionsConfig);
             _rightHand.Init(ragdoll, jointMotionsConfig);
 
+        }
+
+        protected override void OnInputDelegate()
+        {
+            base.OnInputDelegate();
             // input events binding
             ragdoll.inputs.OnLeftClickDelegates += GrabWithLeftHand;
             ragdoll.inputs.OnRightClickDelegates += GrabWithRightHand;
         }
-
         public void GrabWithLeftHand(float weight)
         {
-            _leftHand.enabled = weight < leftHandBearWeight;
             _leftHand.enabled = weight < leftHandBearWeight && weight > 0.1f;
         }
 
         public void GrabWithRightHand(float weight)
         {
-            _rightHand.enabled = weight < rightHandBearWeight;
             _rightHand.enabled = weight < rightHandBearWeight && weight > 0.1f;
         }
     }
