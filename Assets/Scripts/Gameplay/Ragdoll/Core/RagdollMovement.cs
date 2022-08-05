@@ -80,7 +80,6 @@ namespace Gameplay.Ragdoll.Core
         // should press and hold the left-shift to sprint
         private void SprintInput(float sprint)
         {
-            Debug.Log(sprint);
             if (sprint > .1f)
             {
                 _lastSpeed = speed;

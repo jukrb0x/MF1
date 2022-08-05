@@ -1,4 +1,5 @@
 using System;
+using Gameplay.Fracture.Runtime.Scripts.Projectile;
 using UnityEngine;
 
 namespace Gameplay
@@ -15,6 +16,21 @@ namespace Gameplay
     public class GameManager : MonoBehaviour
     {
         private GAME_STATE _gameState;
+
+        private void Start()
+        {
+            var projectilePool = new GameObject("Projectile Pool")
+            {
+                transform =
+                {
+                    position = Vector3.zero,
+                    localScale = Vector3.one,
+                    localRotation = Quaternion.identity
+                }
+            };
+            Instantiate(projectilePool);
+            projectilePool.AddComponent<ProjectilePool>();
+        }
 
         private void Update()
         {

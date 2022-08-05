@@ -1,4 +1,5 @@
 using Gameplay.RayKit.Options;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Gameplay.RayKit
@@ -30,7 +31,7 @@ namespace Gameplay.RayKit
             _ray = new Ray(localTransform.position, localTransform.forward);
             // reset line renderer every frame otherwise it will leave tails
             _lineRenderer.positionCount = 0;
-            RenderRay(localTransform.position);
+            RenderRayAt(localTransform.position);
 
             float remaining = rayEmitter.maxLength; // init
             for (var i = 0; i < rayEmitter.reflections; i++)
@@ -39,11 +40,27 @@ namespace Gameplay.RayKit
                 bool isHit = Physics.Raycast(_ray.origin, _ray.direction, out _hit, remaining);
                 if (isHit)
                 {
-                    RenderRay(_hit.point);
+                    // test if hit the target
+                    RenderRayAt(_hit.point);
                     remaining -= Vector3.Distance(_ray.origin, _hit.point);
-                    if (hitOptions.enabled && _hit.collider.gameObject == hitOptions.hitObject)
+                    if (hitOptions.enabled && hitOptions.hitType == HitType.Trigger
+                                           && _hit.collider.gameObject == hitOptions.hitTarget)
                     {
                         hitOptions.onHit?.Invoke();
+                    }
+                    else if (hitOptions.enabled && hitOptions.hitType == HitType.RaycastHit)
+                    {
+                        // if hit the fracture objects
+                        if (_hit.collider.CompareTag($"Fracture"))
+                        {
+                            var fracture = _hit.collider.gameObject.GetComponent<Fracture.Runtime.Scripts.Fracture>();
+                            if (fracture != null)
+                            {
+                                fracture.FirstRaycastHit = _hit;
+                                fracture.RaycastFracture();
+                                hitOptions.onHit?.Invoke();
+                            }
+                        }
                     }
                     // reflection on mirror
                     if (_hit.collider.CompareTag($"Mirror"))
@@ -53,12 +70,12 @@ namespace Gameplay.RayKit
                 }
                 else // tailing
                 {
-                    RenderRay(_ray.origin + _ray.direction * remaining);
+                    RenderRayAt(_ray.origin + _ray.direction * remaining);
                 }
             }
         }
 
-        private void RenderRay(Vector3 pos)
+        private void RenderRayAt(Vector3 pos)
         {
             int positionCount = _lineRenderer.positionCount;
             positionCount += 1;

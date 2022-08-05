@@ -13,10 +13,13 @@ public class TriggerOptionsPropertyDrawer : PropertyDrawer
     {
         // Create property container element.
         var minimumCollisionForce = property.FindPropertyRelative("minimumCollisionForce");
+        var rayForce = property.FindPropertyRelative("rayForce");
         var triggerType = property.FindPropertyRelative("triggerType");
         var triggerKey = property.FindPropertyRelative("triggerKey");
         var filterCollisionsByTag = property.FindPropertyRelative("filterCollisionsByTag");
         var triggerAllowedTags = property.FindPropertyRelative("triggerAllowedTags");
+        var maximumHealth = property.FindPropertyRelative("maximumHealth");
+        var burstOnHit = property.FindPropertyRelative("burstOnHit");
 
         EditorGUI.indentLevel = 0;
         foldout = EditorGUILayout.BeginFoldoutHeaderGroup(foldout, label);
@@ -36,6 +39,11 @@ public class TriggerOptionsPropertyDrawer : PropertyDrawer
                         EditorGUILayout.EndFoldoutHeaderGroup();
                         EditorGUILayout.PropertyField(triggerAllowedTags, new GUIContent("Included Tags"));
                     }
+                    break;
+                case ((int) TriggerType.RaycastHit):
+                    EditorGUILayout.PropertyField(rayForce);
+                    EditorGUILayout.PropertyField(maximumHealth);
+                    EditorGUILayout.PropertyField(burstOnHit);
                     break;
                 case ((int)TriggerType.Trigger):
                     EditorGUILayout.PropertyField(filterCollisionsByTag);

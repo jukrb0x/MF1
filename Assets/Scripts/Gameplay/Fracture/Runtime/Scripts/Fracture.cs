@@ -1,5 +1,8 @@
+using System;
+using System.Collections;
 using Gameplay.Fracture.Runtime.Scripts.Fragment;
 using Gameplay.Fracture.Runtime.Scripts.Options;
+using Gameplay.Fracture.Runtime.Scripts.Projectile;
 using UnityEngine;
 
 namespace Gameplay.Fracture.Runtime.Scripts
@@ -9,11 +12,15 @@ namespace Gameplay.Fracture.Runtime.Scripts
     [RequireComponent(typeof(Rigidbody))]
     public class Fracture : MonoBehaviour
     {
-        public TriggerOptions    triggerOptions;
-        public FractureOptions   fractureOptions;
-        public RefractureOptions refractureOptions;
-        public CallbackOptions   callbackOptions;
-        public ContactPoint      firstHitPoint;
+        public  TriggerOptions    triggerOptions;
+        public  FractureOptions   fractureOptions;
+        public  RefractureOptions refractureOptions;
+        public  CallbackOptions   callbackOptions;
+        private ContactPoint      _firstCollidePoint;
+        private RaycastHit        _firstRaycastHit;
+#if DEBUG
+        // public GameObject DebugTestObject;
+#endif
 
         /// <summary>
         /// The number of times this fragment has been re-fractured.
@@ -22,9 +29,24 @@ namespace Gameplay.Fracture.Runtime.Scripts
         public int currentRefractureCount = 0;
 
         /// <summary>
-        /// Collector object that stores the produced fragments
+        /// Collector object that stores the produced fragments.
         /// </summary>
-        private GameObject fragmentRoot;
+        private GameObject _fragmentRoot;
+
+        /// <summary>
+        ///  RaycastHit info when a ray hits the fragment.
+        /// </summary>
+        public RaycastHit FirstRaycastHit
+        {
+            get
+            {
+                return _firstRaycastHit;
+            }
+            set
+            {
+                _firstRaycastHit = value;
+            }
+        }
 
         [ContextMenu("Print Mesh Info")]
         public void PrintMeshInfo()
@@ -80,12 +102,44 @@ namespace Gameplay.Fracture.Runtime.Scripts
                     if (collisionForce > triggerOptions.minimumCollisionForce &&
                         (!triggerOptions.filterCollisionsByTag || tagAllowed))
                     {
-                        firstHitPoint = contact;
+                        _firstCollidePoint = contact;
                         ComputeFracture();
                     }
                 }
             }
         }
+
+        // when hit, this will be called continuously
+        public void RaycastFracture()
+        {
+            if (triggerOptions.triggerType == TriggerType.RaycastHit)
+            {
+
+                // deduct health
+                if (triggerOptions.maximumHealth > 0)
+                {
+                    triggerOptions.maximumHealth -= Time.deltaTime;
+                }
+                else
+                {
+                    // burst a invisible projectile
+                    if (triggerOptions.burstOnHit)
+                    {
+                        // foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Projectile"))
+                        // {
+                        //     obj.SetActive(false);
+                        // }
+                        // var projectile = Instantiate(triggerOptions.burstProjectile, _firstRaycastHit.point, Quaternion.identity);
+                        var projectile = ProjectilePool.PoolInstance.GetProjectile();
+                        Instantiate(projectile, _firstRaycastHit.point, Quaternion.identity);
+                        projectile.GetComponent<Rigidbody>().AddForce(-_firstRaycastHit.normal * triggerOptions.rayForce, ForceMode.Impulse);
+                        // projectile.GetComponent<Rigidbody>().velocity = -_firstRaycastHit.normal * triggerOptions.rayForce;
+                    }
+                    ComputeFracture();
+                }
+            }
+        }
+
 
         void OnTriggerEnter(Collider collider)
         {
@@ -123,27 +177,38 @@ namespace Gameplay.Fracture.Runtime.Scripts
             if (mesh != null)
             {
                 // If the fragment root object has not yet been created, create it now
-                if (fragmentRoot == null)
+                if (_fragmentRoot == null)
                 {
                     // Create a game object to contain the fragments
-                    fragmentRoot = new GameObject($"{name}Fragments");
-                    fragmentRoot.transform.SetParent(transform.parent);
+                    _fragmentRoot = new GameObject($"{name}Fragments");
+                    _fragmentRoot.transform.SetParent(transform.parent);
 
                     // Each fragment will handle its own scale
-                    fragmentRoot.transform.position = transform.position;
-                    fragmentRoot.transform.rotation = transform.rotation;
-                    fragmentRoot.transform.localScale = Vector3.one;
+                    _fragmentRoot.transform.position = transform.position;
+                    _fragmentRoot.transform.rotation = transform.rotation;
+                    _fragmentRoot.transform.localScale = Vector3.one;
                 }
 
                 var fragmentTemplate = CreateFragmentTemplate();
 
                 if (fractureOptions.asynchronous)
                 {
+                    switch (triggerOptions.triggerType)
+                    {
+                        case TriggerType.Collision:
+                            Fragmenter.FirstHitPoint = _firstCollidePoint.point;
+                            Fragmenter.FirstHitNormal = _firstCollidePoint.normal;
+                            break;
+                        case TriggerType.RaycastHit:
+                            Fragmenter.FirstHitPoint = _firstRaycastHit.point;
+                            Fragmenter.FirstHitNormal = _firstRaycastHit.normal;
+                            break;
+                    }
                     StartCoroutine(Fragmenter.FractureAsync(
                         gameObject,
                         fractureOptions,
                         fragmentTemplate,
-                        fragmentRoot.transform,
+                        _fragmentRoot.transform,
                         () =>
                         {
                             // Done with template, destroy it
@@ -166,11 +231,30 @@ namespace Gameplay.Fracture.Runtime.Scripts
                 }
                 else
                 {
-                    Fragmenter.firstHitPoint = firstHitPoint;
+                    switch (triggerOptions.triggerType)
+                    {
+                        case TriggerType.Collision:
+                            Fragmenter.FirstHitPoint = _firstCollidePoint.point;
+                            Fragmenter.FirstHitNormal = _firstCollidePoint.normal;
+                            break;
+                        case TriggerType.RaycastHit:
+                            Fragmenter.FirstHitPoint = _firstRaycastHit.point;
+                            Fragmenter.FirstHitNormal = _firstRaycastHit.normal;
+                            break;
+                    }
+#if DEBUG
+                    var debugHitPoint = _firstRaycastHit.point;
+                    var debugHitNormal = _firstRaycastHit.normal;
+                    // Instantiate(DebugTestObject, debugHitPoint, Quaternion.identity);
+                    Debug.DrawRay(debugHitPoint, new Vector3(1, 0, 0), Color.red);
+                    Debug.DrawRay(debugHitPoint, new Vector3(0, 1, 0), Color.green);
+                    Debug.DrawRay(debugHitPoint, new Vector3(0, 0, 1), Color.blue);
+                    Debug.DrawLine(debugHitNormal * 20 + debugHitPoint, debugHitPoint, Color.yellow); //
+#endif
                     Fragmenter.Fracture(gameObject,
                         fractureOptions,
                         fragmentTemplate,
-                        fragmentRoot.transform);
+                        _fragmentRoot.transform);
 
                     // Done with template, destroy it
                     GameObject.Destroy(fragmentTemplate);
@@ -254,7 +338,7 @@ namespace Gameplay.Fracture.Runtime.Scripts
             fractureComponent.refractureOptions = refractureOptions;
             fractureComponent.callbackOptions = callbackOptions;
             fractureComponent.currentRefractureCount = currentRefractureCount + 1;
-            fractureComponent.fragmentRoot = fragmentRoot;
+            fractureComponent._fragmentRoot = _fragmentRoot;
         }
     }
 }

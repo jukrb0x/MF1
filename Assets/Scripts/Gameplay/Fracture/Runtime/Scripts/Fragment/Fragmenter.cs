@@ -11,7 +11,8 @@ namespace Gameplay.Fracture.Runtime.Scripts.Fragment
 {
     public static class Fragmenter
     {
-        public static ContactPoint firstHitPoint;
+        public static Vector3 FirstHitPoint;
+        public static Vector3 FirstHitNormal;
 
         /// <summary>
         /// Generates the mesh fragments based on the provided options. The generated fragment objects are
@@ -42,35 +43,35 @@ namespace Gameplay.Fracture.Runtime.Scripts.Fragment
 
             // Subdivide the mesh into multiple fragments until we reach the fragment limit
             FragmentData topSlice, bottomSlice;
+            // repeat process until we have enough fragments
             while (fragments.Count < options.fragmentCount)
             {
                 FragmentData meshData = fragments.Dequeue();
                 meshData.CalculateBounds();
 
                 // Select an arbitrary fracture plane normal
-                // todo: choose the normal based on the collision hit point
-
                 Vector3 normal = new Vector3(
                     options.xAxis ? Random.Range(-1f, 1f) : 0f,
                     options.yAxis ? Random.Range(-1f, 1f) : 0f,
                     options.zAxis ? Random.Range(-1f, 1f) : 0f);
 
                 var hitPoint = meshData.Bounds.center;
-                // the first slice at the point of first hit
+                // the first slice at the point of the first hit
+                // fixme: not always work
                 if (fragments.Count == 0)
-                    hitPoint = firstHitPoint.point;
+                {
+                    hitPoint = FirstHitPoint;
+                    normal = FirstHitNormal;
+                }
 
                 // Slice and dice!
                 MeshSlicer.Slice(meshData,
                     normal,
-                    // meshData.Bounds.center,
                     hitPoint,
                     options.textureScale,
                     options.textureOffset,
                     out topSlice,
                     out bottomSlice);
-
-
 
                 fragments.Enqueue(topSlice);
                 fragments.Enqueue(bottomSlice);
