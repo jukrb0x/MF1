@@ -62,7 +62,7 @@ namespace ActiveRagdoll
 
         void Start()
         {
-            Camera = new GameObject("Active Ragdoll Camera", typeof(UnityEngine.Camera));
+            Camera = new GameObject("Ragdoll Camera", typeof(UnityEngine.Camera));
             Camera.transform.parent = transform;
 
             _smoothedLookPoint = _lookPoint.position;

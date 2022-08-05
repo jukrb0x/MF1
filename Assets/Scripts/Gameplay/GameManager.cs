@@ -19,6 +19,7 @@ namespace Gameplay
 
         private void Start()
         {
+            // global projectile pool, for the ray emitter
             var projectilePool = new GameObject("Projectile Pool")
             {
                 transform =
