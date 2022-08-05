@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Gameplay.Ragdoll
 {
+    /// The modularized Ragdoll System
     [RequireComponent(typeof(RagdollGrab))]
     [RequireComponent(typeof(RagdollCamera))]
     [RequireComponent(typeof(RagdollMovement))]
@@ -12,7 +13,6 @@ namespace Gameplay.Ragdoll
     [RequireComponent(typeof(RagdollBody))]
     [RequireComponent(typeof(RagdollAnimation))]
     [RequireComponent(typeof(RagdollInputs))]
-    // The modularized Ragdoll System
     public class Ragdoll : MonoBehaviour
     {
         // Ragdoll Components
