@@ -34,6 +34,11 @@ namespace Gameplay.Ragdoll.Input
         {
            OnScrollWheelDelegates?.Invoke(value.Get<Vector2>());
         }
+        
+        public override void OnSprint(InputValue value)
+        {
+            OnSprintDelegates?.Invoke(value.Get<float>());
+        }
         // ----------------------------------
         private void OnApplicationFocus(bool hasFocus)
         {
