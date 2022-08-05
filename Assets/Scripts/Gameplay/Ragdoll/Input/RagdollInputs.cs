@@ -3,6 +3,9 @@ using UnityEngine.InputSystem;
 
 namespace Gameplay.Ragdoll.Input
 {
+    /// <summary>
+    ///   Handles player inputs (Input System) for the ragdoll.
+    /// </summary>
     public class RagdollInputs : InputBase
     {
         // ------ Input System Events ------

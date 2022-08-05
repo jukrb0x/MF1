@@ -18,6 +18,9 @@ namespace Gameplay.Ragdoll.Core
         public Animator animatedAnimator;
         public Animator physicalAnimator;
 
+        // Body Synchronization
+        public AnimatorHelper animatorHelper;
+
         public List<BodyPart> bodyParts;
 
         [Header("Physics")]
@@ -25,9 +28,6 @@ namespace Gameplay.Ragdoll.Core
         [NonSerialized] public Transform[]         animatedBones;
         [NonSerialized] public ConfigurableJoint[] physicalJoints;
         [NonSerialized] public Rigidbody[]         physicalBodies;
-
-        // Synchronization
-        public AnimatorHelper animatorHelper;
 
 
         private void Awake()

@@ -9,53 +9,56 @@ namespace Gameplay.Ragdoll.Core
     {
 
         public Transform lookAt;
-        public float lookSensitivity = 1,
-            scrollSensitivity        = 1;
+        public float     lookSensitivity   = 1;
+        public float     scrollSensitivity = 1;
 
-        public bool invertX = false,
-            invertY         = false;
+        public bool invertX = false;
+        public bool invertY = false;
 
         public GameObject cameraObject;
 
         private Vector2 _rotation;
         private Vector2 _inputDelta;
 
-        [Header("--- SMOOTHING ---")] public float smoothSpeed = 5;
-        public                               bool  smooth      = true;
+        [Header("Smoothing")]
+        public float smoothSpeed = 5;
+        public bool smooth = true;
 
         private Vector3 _smoothedLookPoint, _startDirection;
 
-        [Header("--- STEEP INCLINATIONS ---")]
-        [Tooltip("Allows the camera to make a crane movement over the head when looking down," +
-                 " increasing visibility downwards.")]
+        [Header("Blocking")]
+        public LayerMask dontBlockCamera; // camera won't reposition for the layer mask
+        public float cameraRepositionOffset = 0.15f; // how far to reposition the camera from an obstacle
+
+        [Header("Steep inclination")]
+        // Allows the camera to make a crane movement over the head when looking down,
+        // increasing visibility downwards.
         public bool improveSteepInclinations = true;
 
-        public float inclinationAngle = 30, inclinationDistance = 1.5f;
+        public float inclinationAngle    = 30;
+        public float inclinationDistance = 1.5f;
 
 
-        [Header("--- DISTANCES ---")] public float minDistance = 2;
-        public                               float maxDistance = 5, initialDistance = 3.5f;
+        [Header("Distance")]
+        public float minDistance = 1.2f;
+        public float maxDistance     = 3.5f;
+        public float initialDistance = 3f;
 
         private float _currentDistance;
 
 
-        [Header("--- LIMITS ---")]
-        public float minVerticalAngle = -30; // How far can the camera look down."
-
-        [Tooltip("How far can the camera look up.")]
-        public float maxVerticalAngle = 60;
-
-        [Tooltip("Which layers don't make the camera reposition.")]
-        public LayerMask dontBlockCamera;
-
-        [Tooltip("How far to reposition the camera from an obstacle.")]
-        public float cameraRepositionOffset = 0.15f;
+        [Header("Look limits")]
+        public float minVerticalAngle = -20; // look down
+        public float maxVerticalAngle = 60; // look up
 
         public void Start()
         {
             // create camera object in runtime
-            cameraObject = new GameObject("Active Ragdoll Camera", typeof(Camera));
-            cameraObject.transform.parent = transform;
+            if (cameraObject == null)
+            {
+                cameraObject = new GameObject("Active Ragdoll Camera", typeof(Camera));
+                cameraObject.transform.parent = transform;
+            }
 
             _smoothedLookPoint = lookAt.position;
             _currentDistance = initialDistance;
@@ -70,6 +73,7 @@ namespace Gameplay.Ragdoll.Core
 
         private void OnValidate()
         {
+            // not always working
             if (lookAt == null) lookAt = ragdoll.ragdollBody.GetPhysicalBone(HumanBodyBones.Head);
         }
 
