@@ -1,3 +1,4 @@
+using Gameplay.Fracture.Runtime.Scripts.Fragment;
 using UnityEditor;
 
 [CustomEditor(typeof(UnfreezeFragment))]
