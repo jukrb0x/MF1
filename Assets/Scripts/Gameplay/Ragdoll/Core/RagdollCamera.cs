@@ -51,8 +51,9 @@ namespace Gameplay.Ragdoll.Core
         public float minVerticalAngle = -20; // look down
         public float maxVerticalAngle = 60; // look up
 
-        public void Start()
+        protected override void Start()
         {
+            base.Start();
             // create camera object in runtime
             if (cameraObject == null)
             {
@@ -65,6 +66,15 @@ namespace Gameplay.Ragdoll.Core
 
             _startDirection = lookAt.forward;
         }
+
+        protected override void OnInputDelegate()
+        {
+            base.OnInputDelegate();
+            ragdoll.inputs.OnLookDelegates += LookAroundInput;
+            ragdoll.inputs.OnScrollWheelDelegates += ScrollWheelInput;
+        }
+        
+        
         public void Update()
         {
             UpdateCamera();
@@ -122,17 +132,29 @@ namespace Gameplay.Ragdoll.Core
         }
 
         // Player inputs
-        public void OnLook(InputValue value)
+        // no need to call delegates
+        // public void OnLook(InputValue value)
+        // {
+        //     _inputDelta = value.Get<Vector2>() / 10;
+        // }
+        
+        private void LookAroundInput(Vector2 vector)
         {
-            _inputDelta = value.Get<Vector2>() / 10;
+            _inputDelta = vector / 10;
         }
+
+        private void ScrollWheelInput(Vector2 vector)
+        {
+            _currentDistance = Mathf.Clamp(_currentDistance + vector.y / 1200 * -scrollSensitivity,
+                minDistance, maxDistance);
+        }
+        
 
         public void OnScrollWheel(InputValue value)
         {
             var scrollValue = value.Get<Vector2>();
-            _currentDistance = Mathf.Clamp(_currentDistance + scrollValue.y / 1200 * -scrollSensitivity,
-                minDistance, maxDistance);
         }
+
 
     }
 }

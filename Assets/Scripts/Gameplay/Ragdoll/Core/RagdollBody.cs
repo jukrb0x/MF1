@@ -5,9 +5,12 @@ using UnityEngine;
 
 namespace Gameplay.Ragdoll.Core
 {
-    // The boyd and connections of the ragdoll
-    // the ragdoll has two bodies: animated one and physical one
-    // they bodies need to be synchronized in the runtime
+    /// <summary>The body and connections of the ragdoll</summary>
+    /// <!--
+    /// the ragdoll has two bodies: animated one and physical one,
+    /// they bodies need to be synchronized in the runtime.
+    /// this class do not manipulate the ragdoll, only maintains the relationships
+    /// -->
     public class RagdollBody : RagdollCore
     {
         [Header("Body Torso")]
