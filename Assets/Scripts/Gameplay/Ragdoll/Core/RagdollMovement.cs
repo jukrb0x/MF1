@@ -19,18 +19,22 @@ namespace Gameplay.Ragdoll.Core
         private float     raycastMaxDistance = 0.2f;
         private Rigidbody _footLeft, _footRight;
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
             // init the feet
             _footLeft = ragdoll.ragdollBody.GetPhysicalBone(HumanBodyBones.RightFoot).GetComponent<Rigidbody>();
             _footRight = ragdoll.ragdollBody.GetPhysicalBone(HumanBodyBones.LeftFoot).GetComponent<Rigidbody>();
+        }
 
+        protected override void OnInputDelegate()
+        {
+            base.OnInputDelegate();
             // input events delegates
             ragdoll.inputs.OnMoveDelegates += MovementInput;
             ragdoll.inputs.OnJumpDelegates += JumpInput;
             ragdoll.inputs.OnGroundDelegates += UpdateRagdollOnGround;
         }
-
 
         private void Update()
         {

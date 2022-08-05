@@ -50,12 +50,9 @@ namespace Gameplay.Ragdoll.Core
         private float     _targetDirVerticalPercent;
 
 
-        private void Start()
+        protected override void Start()
         {
-
-            // input event delegates
-            ragdoll.inputs.OnLeftClickDelegates += UseLeftArm;
-            ragdoll.inputs.OnRightClickDelegates += UseRightArm;
+            base.Start();
 
             // binding
             _joints = ragdoll.ragdollBody.physicalJoints;
@@ -70,6 +67,14 @@ namespace Gameplay.Ragdoll.Core
             }
         }
 
+        protected override void OnInputDelegate()
+        {
+            base.OnInputDelegate();
+            // input event delegates
+            ragdoll.inputs.OnLeftClickDelegates += UseLeftArm;
+            ragdoll.inputs.OnRightClickDelegates += UseRightArm;
+        }
+        
         private void FixedUpdate()
         {
             UpdatePhysicalJoints();
