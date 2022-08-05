@@ -101,11 +101,12 @@ namespace Gameplay.Ragdoll.Core
         {
             UpdateTargetRotation();
             ApplyCustomDrag();
+            // wondering if this is the best place to put jump(), maybe call if stabilizer joint
+            if (_jumping && ragdoll.ragdollMovement.IsOnGround) Jump();
 
-            if (_jumping && ragdoll.ragdollMovement.IsOnGround) Jump(); // wondering if this is the best place to put this, maybe stabilizer joint
+            // generally, only stabilizer joint and manual torque are used
             switch (balanceMode)
             {
-
                 case BalanceMode.UprightTorque:
                     var up = ragdoll.ragdollBody.physicalTorso.transform.up;
                     var balancePercent = Vector3.Angle(up,
@@ -155,6 +156,7 @@ namespace Gameplay.Ragdoll.Core
         private void Jump()
         {
             // fixme: current ragdoll in the air only roll forward based on in direction of screen
+            //        the problem seems to be in the animation
             var up = new Vector3(0, 1, 0);
             var f = up * jumpForce;
             // _activeRagdoll.PhysicalTorso.AddForce(f);
