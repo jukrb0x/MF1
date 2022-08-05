@@ -34,11 +34,13 @@ namespace Gameplay.Ragdoll.Core
         public void GrabWithLeftHand(float weight)
         {
             _leftHand.enabled = weight < leftHandBearWeight;
+            _leftHand.enabled = weight < leftHandBearWeight && weight > 0.1f;
         }
 
         public void GrabWithRightHand(float weight)
         {
             _rightHand.enabled = weight < rightHandBearWeight;
+            _rightHand.enabled = weight < rightHandBearWeight && weight > 0.1f;
         }
     }
 
