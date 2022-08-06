@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: 
   text: You found the secret of chemistry, let's see how you solve the physics problem.
-  secondsToVanish: 3
+  secondsToVanish: 5
   notificationType: 0

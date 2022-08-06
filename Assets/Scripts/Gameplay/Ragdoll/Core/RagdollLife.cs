@@ -30,6 +30,11 @@ namespace Gameplay.Ragdoll.Core
 
 
         }
+        private void OnEnable()
+        {
+            TryGetStabilizer();
+        }
+        
         private void OnValidate()
         {
             if (ragdoll)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 #if UNITY_EDITOR
@@ -9,7 +10,7 @@ namespace Gameplay.Fracture.Runtime.Scripts.Projectile
     public class ProjectilePool : MonoBehaviour
     {
         public static ProjectilePool PoolInstance;
-        private       GameObject     _projectilePrefab;
+        public        GameObject     projectilePrefab;
         public        int            poolSize = 20;
 
         private List<GameObject> _projectilePool;
@@ -18,18 +19,24 @@ namespace Gameplay.Fracture.Runtime.Scripts.Projectile
         private void Awake()
         {
             PoolInstance = this;
-#if UNITY_EDITOR
-            _projectilePrefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Projectile.prefab", typeof(GameObject)) as GameObject;
-#else
-            _projectilePrefab = Resources.Load("Assets/Prefabs/Projectile.prefab", typeof(GameObject)) as GameObject;
-#endif
+            // if (projectilePrefab == null)
+            // {
+            //     // workaround
+            //     while(projectilePrefab == null) 
+            //         projectilePrefab = ProjectileSample.Instance.projectilePrefab;
+            //     projectilePrefab.AddComponent<ProjectileController>();
+            // }
             _projectilePool = new List<GameObject>();
             for (var i = 0; i < poolSize; i++)
             {
-                var projectile = Instantiate(_projectilePrefab);
-                projectile.SetActive(false);
-                _projectilePool.Add(projectile);
+                if (projectilePrefab != null)
+                {
+                    var projectile = Instantiate(projectilePrefab);
+                    projectile.SetActive(false);
+                    _projectilePool.Add(projectile);
+                }
             }
+
         }
 
 
@@ -45,6 +52,11 @@ namespace Gameplay.Fracture.Runtime.Scripts.Projectile
             return projectile;
         }
 
+        
+        
+        
+        
+        
         // public GameObject GetProjectile()
         // {
         //     foreach (var projectile in _projectilePool)
