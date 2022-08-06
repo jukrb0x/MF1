@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Good Jump
   m_EditorClassIdentifier: 
   description: 
-  text: Well done! You made a good jump, now keep going forward.
+  text: Well done! You just made a good jump, now keep going forward.
   secondsToVanish: 3
   notificationType: 1
