@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: 
   text: Find the chemical elemnts around you and put them in the reactor to make
-    something.
+    something powerful.
   secondsToVanish: 5
   notificationType: 0
