@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: 
   sceneReference:
-    m_AssetGUID: e3c73a3a4412ec84daf5b60b4b0281c7
+    m_AssetGUID: bf059a12982e92845aa6d4b95b10b142
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
