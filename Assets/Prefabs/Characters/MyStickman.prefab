@@ -358,7 +358,7 @@ MonoBehaviour:
   smooth: 1
   dontBlockCamera:
     serializedVersion: 2
-    m_Bits: 3872
+    m_Bits: 7968
   cameraRepositionOffset: 0.15
   improveSteepInclinations: 1
   inclinationAngle: 30
@@ -533,6 +533,11 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -3604311915268054611, guid: 0e9a428405a52cf43b95ab206dd3babd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -516098083770646512, guid: 0e9a428405a52cf43b95ab206dd3babd,
         type: 3}
       propertyPath: m_Layer
       value: 8
@@ -739,6 +744,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 95fcf9331ca635c459a201f2c56f44dc, type: 2}
+    - target: {fileID: -516098083770646512, guid: 0e9a428405a52cf43b95ab206dd3babd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0e9a428405a52cf43b95ab206dd3babd,
         type: 3}
       propertyPath: m_Name
@@ -758,6 +768,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4406549012373832000, guid: 0e9a428405a52cf43b95ab206dd3babd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4602617871742934666, guid: 0e9a428405a52cf43b95ab206dd3babd,
         type: 3}
@@ -783,6 +798,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6316644661039583967, guid: 0e9a428405a52cf43b95ab206dd3babd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6356988802346945930, guid: 0e9a428405a52cf43b95ab206dd3babd,
         type: 3}
