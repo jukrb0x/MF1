@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1947078923ce45968323a1cd96c1c6f1, type: 3}
-  m_Name: World
+  m_Script: {fileID: 11500000, guid: 34e0a0aef351401a8ddc2a772aee9327, type: 3}
+  m_Name: Chemistry Tutorial
   m_EditorClassIdentifier: 
   description: 
-  sceneReference:
-    m_AssetGUID: bf059a12982e92845aa6d4b95b10b142
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  sceneType: 0
+  text: Find the chemical elemnts around you and put them in the reactor to make
+    something.
+  secondsToVanish: 5
+  notificationType: 0
