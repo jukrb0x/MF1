@@ -6,6 +6,7 @@ using UnityEngine;
 namespace Gameplay.Ragdoll
 {
     /// The modularized Ragdoll System
+    [RequireComponent(typeof(RagdollLife))]
     [RequireComponent(typeof(RagdollGrab))]
     [RequireComponent(typeof(RagdollCamera))]
     [RequireComponent(typeof(RagdollMovement))]
@@ -24,8 +25,10 @@ namespace Gameplay.Ragdoll
         public RagdollMovement  ragdollMovement;
         public RagdollCamera    ragdollCamera;
         public RagdollGrab      ragdollGrab;
+        public RagdollLife      ragdollLife;
 
         // Ragdoll Internals
+        public bool canInput = true;
 
         private void OnValidate()
         {
@@ -36,9 +39,13 @@ namespace Gameplay.Ragdoll
             if (ragdollMovement == null) ragdollMovement = GetComponent<RagdollMovement>();
             if (ragdollCamera == null) ragdollCamera = GetComponent<RagdollCamera>();
             if (ragdollGrab == null) ragdollGrab = GetComponent<RagdollGrab>();
+            if (ragdollLife == null) ragdollLife = GetComponent<RagdollLife>();
         }
-
-
-
+        private void Update()
+        {
+            var gameState = GameManager.Instance.gameState;
+            canInput = gameState == GAME_STATE.PLAYING;
+            inputs.enabled = canInput;
+        }
     }
 }
