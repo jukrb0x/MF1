@@ -358,7 +358,7 @@ MonoBehaviour:
   smooth: 1
   dontBlockCamera:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 3872
   cameraRepositionOffset: 0.15
   improveSteepInclinations: 1
   inclinationAngle: 30

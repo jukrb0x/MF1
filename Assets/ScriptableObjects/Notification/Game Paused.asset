@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Game Paused
   m_EditorClassIdentifier: 
   description: 
-  text: Game is paused. Press Esc or P to continue.
-  secondsToVanish: 5
+  text: Game is paused. Press Esc or P to continue. Press R to restart.
+  secondsToVanish: 1.5
   notificationType: 1
