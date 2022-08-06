@@ -7,7 +7,7 @@ namespace Gameplay.RayKit.Options
     public enum HitType
     {
         Trigger,
-        RaycastHit,
+        RaycastHitFracture,
     }
 
     [Serializable]

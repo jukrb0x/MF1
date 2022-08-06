@@ -379,15 +379,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "PauseMenu",
-                    "type": "Button",
-                    "id": "c871a2e3-43d1-4d45-90db-ad371fbc96c7",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Submit",
                     "type": "Button",
                     "id": "1a602705-4036-4863-8e6f-b282a7926d03",
@@ -464,6 +455,24 @@
                     "type": "PassThrough",
                     "id": "71dd6c23-b1a2-41ab-ace7-ed5f17d3910c",
                     "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PauseMenu",
+                    "type": "Button",
+                    "id": "c871a2e3-43d1-4d45-90db-ad371fbc96c7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Restart",
+                    "type": "Button",
+                    "id": "eff4cb2c-7e24-458a-8075-00ceadd4c093",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -885,6 +894,17 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c272d3db-9e5e-4b73-8401-9dcd2c21ab37",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Restart",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
