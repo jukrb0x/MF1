@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 137e08f558354b1292c4597b8d36ed46, type: 3}
+  m_Name: Make Big Bucket
+  m_EditorClassIdentifier: 
+  description: 2 Gold + Small Bucket => Big Rolling Bucket
+  reactants:
+  - {fileID: 4390455505817966825, guid: dd8542c1c6af7a744ac559bf884d28d8, type: 3}
+  - {fileID: 4390455505817966825, guid: dd8542c1c6af7a744ac559bf884d28d8, type: 3}
+  - {fileID: 1956254451572911068, guid: cded3560b12118041b9486979f294a2e, type: 3}
+  products:
+  - {fileID: 9069941062679741910, guid: 61d45519a7944854c89d78248bf302fb, type: 3}

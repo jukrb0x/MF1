@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 8028773509036764126}
   - component: {fileID: 8386054392443438962}
   m_Layer: 0
-  m_Name: Rolling Bucket
+  m_Name: Rolling Bucket Old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
