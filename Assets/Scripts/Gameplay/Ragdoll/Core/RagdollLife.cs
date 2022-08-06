@@ -23,6 +23,12 @@ namespace Gameplay.Ragdoll.Core
                 animatedTorso = ragdoll.ragdollBody.animatedTorso;
 
             TryGetStabilizer();
+            // fixme: head shaking after restart game
+            // workaround: reset the animation
+            ragdoll.gameObject.GetComponent<RagdollAnimation>().enabled = false;
+            ragdoll.gameObject.GetComponent<RagdollAnimation>().enabled = true;
+
+
         }
         private void OnValidate()
         {

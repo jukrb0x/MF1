@@ -87,6 +87,9 @@ namespace Gameplay
         {
             SetGameState(GAME_STATE.WIN);
             Debug.Log("You Win!");
+            SwitchPlayerInputActionMap(true);
+            Time.timeScale = 0;
+            SetCursorLockState(false);
             ShowUI();
         }
 
