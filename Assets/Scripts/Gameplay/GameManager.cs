@@ -49,21 +49,22 @@ namespace Gameplay
         private void ResetGameplay()
         {
             // global projectile pool, for the ray emitter
-            var projectilePool = new GameObject("Projectile Pool")
-            {
-                transform =
-                {
-                    position = Vector3.zero,
-                    localScale = Vector3.one,
-                    localRotation = Quaternion.identity
-                }
-            };
-            Instantiate(projectilePool);
-            projectilePool.AddComponent<ProjectilePool>();
+            // var projectilePool = new GameObject("Projectile Pool")
+            // {
+            //     transform =
+            //     {
+            //         position = Vector3.zero,
+            //         localScale = Vector3.one,
+            //         localRotation = Quaternion.identity
+            //     }
+            // };
+            // Instantiate(projectilePool);
+            // projectilePool.AddComponent<ProjectilePool>();
 
             // start playing
             SetGameState(GAME_STATE.PLAYING);
             Time.timeScale = 1;
+            SetCursorLockState(true);
             SwitchPlayerInputActionMap(false);
         }
 
