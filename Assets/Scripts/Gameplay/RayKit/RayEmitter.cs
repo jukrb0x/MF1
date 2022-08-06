@@ -43,12 +43,15 @@ namespace Gameplay.RayKit
                     // test if hit the target
                     RenderRayAt(_hit.point);
                     remaining -= Vector3.Distance(_ray.origin, _hit.point);
+                    
+                    // hit the target and trigger
                     if (hitOptions.enabled && hitOptions.hitType == HitType.Trigger
                                            && _hit.collider.gameObject == hitOptions.hitTarget)
                     {
                         hitOptions.onHit?.Invoke();
                     }
-                    else if (hitOptions.enabled && hitOptions.hitType == HitType.RaycastHit)
+                    // raycast fracture
+                    else if (hitOptions.enabled && hitOptions.hitType == HitType.RaycastHitFracture)
                     {
                         // if hit the fracture objects
                         if (_hit.collider.CompareTag($"Fracture"))
@@ -62,6 +65,7 @@ namespace Gameplay.RayKit
                             }
                         }
                     }
+                    
                     // reflection on mirror
                     if (_hit.collider.CompareTag($"Mirror"))
                         _ray = new Ray(_hit.point, Vector3.Reflect(_ray.direction, _hit.normal));

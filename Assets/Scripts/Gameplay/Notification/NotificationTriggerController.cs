@@ -32,6 +32,12 @@ namespace Gameplay.Notification
                 notificationUI2Row = GameObject.Find("notification2row").gameObject;
         }
 
+        
+        
+        
+        
+        
+        
 
         private void Start()
         {
