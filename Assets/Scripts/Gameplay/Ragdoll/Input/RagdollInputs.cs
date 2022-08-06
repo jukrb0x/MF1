@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,8 +7,10 @@ namespace Gameplay.Ragdoll.Input
     /// <summary>
     ///   Handles player inputs (Input System) for the ragdoll.
     /// </summary>
+    [RequireComponent(typeof(PlayerInput))]
     public class RagdollInputs : InputBase
     {
+        public PlayerInput playerInput;
         // ------ Input System Events ------
         public override void OnMove(InputValue value)
         {
@@ -32,28 +35,29 @@ namespace Gameplay.Ragdoll.Input
         }
         public override void OnScrollWheel(InputValue value)
         {
-           OnScrollWheelDelegates?.Invoke(value.Get<Vector2>());
+            OnScrollWheelDelegates?.Invoke(value.Get<Vector2>());
         }
-        
+
         public override void OnSprint(InputValue value)
         {
             OnSprintDelegates?.Invoke(value.Get<float>());
         }
         // ----------------------------------
-        private void OnApplicationFocus(bool hasFocus)
-        {
-            // todo: gm can control this, pause menu...
-            Cursor.lockState = hasFocus ? CursorLockMode.Locked : CursorLockMode.None;
-        }
-        
-
         private void Start()
         {
-        }
-
-        private void Update()
-        {
+            if(playerInput == null) playerInput = GetComponent<PlayerInput>();
         }
         
+        private void OnDisable()
+        {
+            if (playerInput != null)
+                playerInput.enabled = false;
+        }
+
+        private void OnEnable()
+        {
+            if (playerInput != null)
+                playerInput.enabled = true;
+        }
     }
 }

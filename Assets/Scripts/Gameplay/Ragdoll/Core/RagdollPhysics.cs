@@ -20,7 +20,7 @@ namespace Gameplay.Ragdoll.Core
         }
 
         public  BalanceMode       balanceMode = BalanceMode.StabilizerJoint;
-        private GameObject        _stabilizer;
+        public GameObject        stabilizer;
         private Rigidbody         _stabilizerRigidbody;
         private ConfigurableJoint _stabilizerJoint;
         [SerializeField] [Header("Stabilizer")]
@@ -89,15 +89,15 @@ namespace Gameplay.Ragdoll.Core
         // stabilizer is used to stable the ragdoll in upright position
         private void InitStabilizer()
         {
-            _stabilizer = new GameObject("Stabilizer", typeof(Rigidbody), typeof(ConfigurableJoint));
-            _stabilizer.transform.parent = ragdoll.ragdollBody.physicalTorso.transform.parent;
-            _stabilizer.transform.rotation = ragdoll.ragdollBody.physicalTorso.rotation;
+            stabilizer = new GameObject("Stabilizer", typeof(Rigidbody), typeof(ConfigurableJoint));
+            stabilizer.transform.parent = ragdoll.ragdollBody.physicalTorso.transform.parent;
+            stabilizer.transform.rotation = ragdoll.ragdollBody.physicalTorso.rotation;
 
-            _stabilizerJoint = _stabilizer.GetComponent<ConfigurableJoint>();
-            _stabilizerRigidbody = _stabilizer.GetComponent<Rigidbody>();
+            _stabilizerJoint = stabilizer.GetComponent<ConfigurableJoint>();
+            _stabilizerRigidbody = stabilizer.GetComponent<Rigidbody>();
             _stabilizerRigidbody.isKinematic = true;
 
-            var joint = _stabilizer.GetComponent<ConfigurableJoint>();
+            var joint = stabilizer.GetComponent<ConfigurableJoint>();
             joint.connectedBody = ragdoll.ragdollBody.physicalTorso;
         }
 

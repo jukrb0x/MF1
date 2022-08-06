@@ -9,7 +9,6 @@ namespace Gameplay.Ragdoll
 
         public Ragdoll ragdoll;
 
-
         // todo:
         // 1. binding of animation and bones(physical)
         // 2. self balancing
