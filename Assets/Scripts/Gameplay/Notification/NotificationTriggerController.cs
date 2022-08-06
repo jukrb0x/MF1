@@ -16,6 +16,7 @@ namespace Gameplay.Notification
         private TextMeshProUGUI  _notificationText;
         private float            _staySeconds;
         private bool             _isPlayed;
+        public  bool             canReplay = true;
 
         private void OnValidate()
         {
@@ -31,13 +32,6 @@ namespace Gameplay.Notification
             if (notificationUI2Row == null)
                 notificationUI2Row = GameObject.Find("notification2row").gameObject;
         }
-
-        
-        
-        
-        
-        
-        
 
         private void Start()
         {
@@ -81,7 +75,7 @@ namespace Gameplay.Notification
         }
         private void OnTriggerExit(Collider other)
         {
-            _isPlayed = false;
+            if (canReplay) _isPlayed = false;
         }
 
         private void FillTheText()
@@ -112,7 +106,7 @@ namespace Gameplay.Notification
             float timer = _staySeconds;
             timer -= Time.deltaTime;
             yield return new WaitForSeconds(timer);
-            _isPlayed = false;
+            if (canReplay) _isPlayed = false;
         }
     }
 }
