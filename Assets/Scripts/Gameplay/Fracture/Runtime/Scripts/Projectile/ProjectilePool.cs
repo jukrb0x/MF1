@@ -1,6 +1,8 @@
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace Gameplay.Fracture.Runtime.Scripts.Projectile
 {
@@ -16,7 +18,11 @@ namespace Gameplay.Fracture.Runtime.Scripts.Projectile
         private void Awake()
         {
             PoolInstance = this;
+#if UNITY_EDITOR
             _projectilePrefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Projectile.prefab", typeof(GameObject)) as GameObject;
+#else
+            _projectilePrefab = Resources.Load("Assets/Prefabs/Projectile.prefab", typeof(GameObject)) as GameObject;
+#endif
             _projectilePool = new List<GameObject>();
             for (var i = 0; i < poolSize; i++)
             {
