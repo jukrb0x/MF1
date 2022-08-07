@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Welcome
   m_EditorClassIdentifier: 
   description: 
-  text: Welcome to Chocolate's Advanture! Keep going and get the treasure to win
+  text: Welcome to Chocolate's Adventure! Keep going and get the treasure to win
     the game.
   secondsToVanish: 5
   notificationType: 0
