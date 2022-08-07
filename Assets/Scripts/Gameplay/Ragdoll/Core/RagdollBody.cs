@@ -8,7 +8,7 @@ namespace Gameplay.Ragdoll.Core
     /// <summary>The body and connections of the ragdoll</summary>
     /// <!--
     /// the ragdoll has two bodies: animated one and physical one,
-    /// they bodies need to be synchronized in the runtime.
+    /// they bodies will be synchronized in the runtime for clarity
     /// this class do not manipulate the ragdoll, only maintains the relationships
     /// -->
     public class RagdollBody : RagdollCore
