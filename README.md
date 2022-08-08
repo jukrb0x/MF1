@@ -1,4 +1,4 @@
-# MF1 (Chocolates' Adventure)
+# MF1 (Chocolate's Adventure)
 Yet Another *torturing* Unity Game.
 
 ![image](https://user-images.githubusercontent.com/15688641/183360253-1b42dcab-174c-42f7-9e9f-17c96562070a.png)
