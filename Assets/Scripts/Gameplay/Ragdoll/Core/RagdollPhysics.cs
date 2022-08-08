@@ -143,6 +143,7 @@ namespace Gameplay.Ragdoll.Core
                 case BalanceMode.ManualTorque:
                     if (ragdoll.ragdollBody.physicalTorso.angularVelocity.magnitude < maxManualRotSpeed)
                     {
+                        // fixme: current ragdoll in the air only roll forward based on in direction of screen
                         Vector2 force = _torqueInput * manualTorque;
                         ragdoll.ragdollBody.physicalTorso.AddRelativeTorque(force.y, 0, force.x);
                     }
@@ -160,7 +161,6 @@ namespace Gameplay.Ragdoll.Core
         private void Jump()
         {
             // fixme: current ragdoll in the air only roll forward based on in direction of screen
-            //        the problem seems to be in the animation
             var up = new Vector3(0, 1, 0);
             var f = up * jumpForce;
             // _activeRagdoll.PhysicalTorso.AddForce(f);
