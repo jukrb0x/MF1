@@ -5,7 +5,6 @@ Yet A *torturing* Unity Game.
 
 # Screenshots
 
-Does anybody know how to play the game?
 ![fracture](https://user-images.githubusercontent.com/15688641/183360918-9713040a-8149-4944-a85a-4e965d891920.png)
 <img src="https://user-images.githubusercontent.com/15688641/183360503-a9d876c7-c10d-476e-a130-b5a760eaeae6.png" height="300" />
 <img src="https://user-images.githubusercontent.com/15688641/183360547-f34eef77-887d-47f0-87cf-39d0624c9dea.png" height="300" />
