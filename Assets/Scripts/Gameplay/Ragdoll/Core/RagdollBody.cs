@@ -237,8 +237,11 @@ namespace Gameplay.Ragdoll.Core
         }
     }
 
+    /// <summary>
+    ///  required by grabbing
+    /// </summary>
     [Serializable]
-    public struct JointMotionsConfig // todo: will need when grab things
+    public struct JointMotionsConfig
     {
         public ConfigurableJointMotion angularXMotion, angularYMotion, angularZMotion;
         public float                   angularXLimit,  angularYLimit,  angularZLimit;
